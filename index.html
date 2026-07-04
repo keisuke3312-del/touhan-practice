@@ -135,6 +135,15 @@
     <button id="printFeedback" class="subBtn">フィードバックPDFを生成</button>
   </div>
 
+
+  <div class="card">
+    <h2>採点結果JSON取り込み</h2>
+    <p class="note">ChatGPTが返した採点結果JSONを貼り付けると、採点結果・危ない知識・講評・復習予定をこの端末に保存します。</p>
+    <textarea id="resultImportBox" placeholder='{"type":"touhan_result","examId":"day-001","setId":"day-001-set-1",...}'></textarea>
+    <button id="importResultJson" class="mainBtn">採点結果JSONを取り込み</button>
+    <button id="copyResultTemplate" class="subBtn">採点結果JSONテンプレをコピー</button>
+  </div>
+
   <div class="card">
     <h2>バックアップ・復元</h2>
     <button id="exportData" class="subBtn">全データをコピー</button>

@@ -3,11 +3,11 @@ let data,examId,setId,index=0,examMode=false,timer=null,remaining=1800,view="nor
 let store=JSON.parse(localStorage.getItem(STORE)||"{}"),custom=JSON.parse(localStorage.getItem(CUSTOM)||"[]");
 const $=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
 function save(){localStorage.setItem(STORE,JSON.stringify(store))}function saveC(){localStorage.setItem(CUSTOM,JSON.stringify(custom))}function toast(m="コピーしました"){let t=$("toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1300)}function today(){return new Date().toLocaleDateString("ja-JP")}function iso(d=new Date()){return d.toISOString().slice(0,10)}function add(d,n){let x=new Date(d);x.setDate(x.getDate()+n);return x.toISOString().slice(0,10)}function exam(){return data.exams.find(e=>e.id===examId)||data.exams[0]}function set(){return exam().sets.find(s=>s.id===setId)||exam().sets[0]}function qs(){return set().questions||[]}
-function arr(e=examId,s=setId){let ex=data.exams.find(x=>x.id===e)||data.exams[0],se=ex.sets.find(x=>x.id===s)||ex.sets[0],n=(se.questions&&se.questions.length)||30,k=e+"::"+s;if(!store[k])store[k]={answers:Array(n).fill(""),graded:false,wrong:[],score:null,updated:null,review:[],manualFeedback:""};if(store[k].answers.length!==n)store[k].answers=Array(n).fill("");if(!store[k].review)store[k].review=[];return store[k]}
+function arr(e=examId,s=setId){let ex=data.exams.find(x=>x.id===e)||data.exams[0],se=ex.sets.find(x=>x.id===s)||ex.sets[0],n=(se.questions&&se.questions.length)||30,k=e+"::"+s;if(!store[k])store[k]={answers:Array(n).fill(""),graded:false,wrong:[],score:null,updated:null,review:[],manualFeedback:"",chatgptResult:null};if(store[k].answers.length!==n)store[k].answers=Array(n).fill("");if(!store[k].review)store[k].review=[];return store[k]}
 $("loginBtn").onclick=()=>{if($("pass").value===P){localStorage.setItem(LOGIN,"ok");boot()}else $("loginErr").classList.remove("hidden")};$("pass").onkeydown=e=>{if(e.key==="Enter")$("loginBtn").click()};$("lockBtn").onclick=()=>{localStorage.removeItem(LOGIN);location.reload()};
 async function boot(){$("login").classList.add("hidden");$("app").classList.remove("hidden");try{try{data=await fetch(DATA_URL,{cache:"no-store"}).then(r=>r.json())}catch(e){data=EMBED}data=JSON.parse(JSON.stringify(data));data.exams=[...data.exams,...custom].slice(0,100);let latest=[...data.exams].sort((a,b)=>(b.date||"").localeCompare(a.date||""))[0];examId=latest.id;setId=(latest.sets.find(s=>(s.questions||[]).length)||latest.sets[0]).id;$("sub").textContent=data.meta.appName+" v"+data.meta.version;selectors();bind();render()}catch(e){alert("読み込み失敗")}}
 function selectors(){$("examSelect").innerHTML=data.exams.map(e=>`<option value="${e.id}">${esc(e.title)} ${e.date||""}</option>`).join("");$("examSelect").value=examId;setOptions();$("examSelect").onchange=()=>{examId=$("examSelect").value;setOptions();setId=$("setSelect").value;index=0;normal();render()};$("setSelect").onchange=()=>{setId=$("setSelect").value;index=0;normal();render()}}function setOptions(){let e=exam();$("setSelect").innerHTML=e.sets.map(s=>`<option value="${s.id}">${esc(s.title)}</option>`).join("");if(!e.sets.some(s=>s.id===setId))setId=e.sets[0].id;$("setSelect").value=setId}
-function bind(){document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));$(b.dataset.tab).classList.remove("hidden");render()});$("startToday").onclick=()=>{index=0;document.querySelector('[data-tab="solve"]').click()};$("prevBtn").onclick=()=>{if(index>0)index--;render()};$("nextBtn").onclick=()=>{if(index<vqs().length-1)index++;render()};$("normalModeBtn").onclick=()=>{normal();render()};$("weakModeBtn").onclick=()=>{view="weak";viewList=weakList();index=0;render()};$("randomModeBtn").onclick=()=>{view="random";viewList=shuffle(qs().map((q,i)=>({q,i})));index=0;render()};$("searchBox").oninput=()=>{view="search";viewList=searchList($("searchBox").value);index=0;render()};$("copyCurrent").onclick=()=>copy(promptCurrent());$("openChatGPT").onclick=async()=>{await copy(promptCurrent());location.href="https://chatgpt.com/"};$("gradeCurrent").onclick=()=>{grade();render();toast("自己採点しました")};$("copyAll").onclick=()=>copy(promptAll());$("showWrong").onclick=wrong;$("getTodayJson").onclick=getPrompt;$("importJson").onclick=importJson;$("copyTemplate").onclick=tpl;$("exportData").onclick=()=>copy(JSON.stringify({answers:store,customExams:custom},null,2));$("restoreData").onclick=restore;$("resetSet").onclick=()=>{if(confirm("リセットしますか？")){delete store[examId+"::"+setId];save();render()}};$("resetAll").onclick=()=>{if(confirm("全削除しますか？")){store={};custom=[];save();saveC();location.reload()}};$("printQuestions").onclick=printQ;$("printFeedback").onclick=printF;$("startExamMode").onclick=()=>startTimer(1800,false);$("startMockMode").onclick=()=>startTimer(7200,false);$("wrongMockMode").onclick=()=>{view="weak";viewList=weakList();index=0;startTimer(3600,true)};$("finishExamMode").onclick=finish;$("copyAutoFeedback").onclick=()=>copy(feedback())}
+function bind(){document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));$(b.dataset.tab).classList.remove("hidden");render()});$("startToday").onclick=()=>{index=0;document.querySelector('[data-tab="solve"]').click()};$("prevBtn").onclick=()=>{if(index>0)index--;render()};$("nextBtn").onclick=()=>{if(index<vqs().length-1)index++;render()};$("normalModeBtn").onclick=()=>{normal();render()};$("weakModeBtn").onclick=()=>{view="weak";viewList=weakList();index=0;render()};$("randomModeBtn").onclick=()=>{view="random";viewList=shuffle(qs().map((q,i)=>({q,i})));index=0;render()};$("searchBox").oninput=()=>{view="search";viewList=searchList($("searchBox").value);index=0;render()};$("copyCurrent").onclick=()=>copy(promptCurrent());$("openChatGPT").onclick=async()=>{await copy(promptCurrent());location.href="https://chatgpt.com/"};$("gradeCurrent").onclick=()=>{grade();render();toast("自己採点しました")};$("copyAll").onclick=()=>copy(promptAll());$("showWrong").onclick=wrong;$("getTodayJson").onclick=getPrompt;$("importJson").onclick=importJson;$("copyTemplate").onclick=tpl;$("exportData").onclick=()=>copy(JSON.stringify({answers:store,customExams:custom},null,2));$("restoreData").onclick=restore;$("importResultJson").onclick=importResultJson;$("copyResultTemplate").onclick=copyResultTemplate;$("resetSet").onclick=()=>{if(confirm("リセットしますか？")){delete store[examId+"::"+setId];save();render()}};$("resetAll").onclick=()=>{if(confirm("全削除しますか？")){store={};custom=[];save();saveC();location.reload()}};$("printQuestions").onclick=printQ;$("printFeedback").onclick=printF;$("startExamMode").onclick=()=>startTimer(1800,false);$("startMockMode").onclick=()=>startTimer(7200,false);$("wrongMockMode").onclick=()=>{view="weak";viewList=weakList();index=0;startTimer(3600,true)};$("finishExamMode").onclick=finish;$("copyAutoFeedback").onclick=()=>copy(feedback())}
 function normal(){view="normal";viewList=null;$("searchBox").value=""}function vqs(){return view==="normal"||!viewList?qs().map((q,i)=>({q,i})):viewList}function weakList(){let w=[];data.exams.forEach(e=>e.sets.forEach(s=>{let st=arr(e.id,s.id),list=s.questions||[];if(st.graded)st.wrong.forEach(i=>list[i]&&w.push({q:list[i],i}))}));return w.length?w:qs().map((q,i)=>({q,i}))}function searchList(term){term=(term||"").trim();if(!term)return qs().map((q,i)=>({q,i}));return qs().map((q,i)=>({q,i})).filter(x=>(x.q.text+x.q.chapter+x.q.source+x.q.explanation).includes(term))}
 function render(){if(!data)return;home();question();stats();graphs();calendar();reviews();registered();radar();$("autoFeedbackBox").textContent=feedback();dueNotice()}
 function home(){let e=exam(),s=set(),a=0,t=0;e.sets.forEach(st=>{let x=arr(e.id,st.id).answers;a+=x.filter(Boolean).length;t+=x.length});$("todayLabel").textContent=`${e.date||""} ${e.title} ${s.title}`;$("todayProgress").textContent=a+"/"+t;$("countdown").innerHTML=data.meta.examDates.map(x=>`<b>${x.label}</b><br>${Math.ceil((new Date(x.date)-new Date())/86400000)}日`).join("<hr>");let first=new Date("2026-07-02"),last=new Date("2026-09-06"),now=new Date();$("examProgress").textContent="学習期間進捗："+Math.max(0,Math.min(100,Math.round((now-first)/(last-first)*100)))+"%";$("streak").textContent=streak()+"日";$("examCount").textContent=data.exams.length+"/100";let st=arr(),u=st.answers.filter(x=>!x).length;$("nextAction").innerHTML=u?`未回答が <b>${u}</b> 問あります。`:st.graded?`自己採点済み。不正解 ${st.wrong.length} 問。`:"30問回答済み。採点へ。"}
@@ -17,14 +17,7 @@ function all(){let total=0,correct=0,ch={},weak={},hist=[];data.exams.forEach(e=
 function stats(){let s=all();$("statsBox").innerHTML=`<div class="statRow"><b>累計</b><span></span><span>${s.rate}%</span></div>`+["第1章","第2章","第3章","第4章","第5章"].map(k=>{let v=s.ch[k]||{c:0,t:0};return `<div class="statRow"><b>${k}</b><span>${v.c}/${v.t}</span><span>${v.t?Math.round(v.c/v.t*100):0}%</span></div>`}).join("")}
 function bar(label,rate){return `<div class="barRow"><span>${esc(label).slice(0,8)}</span><div class="barTrack"><div class="barFill ${rate<70?"bad":rate<80?"warn":""}" style="width:${rate}%"></div></div><span>${rate}%</span></div>`}function graphs(){let s=all();$("rateGraph").innerHTML=s.hist.length?s.hist.slice(-10).map(h=>bar(h.label,h.rate)).join(""):"採点後に表示";$("chapterGraph").innerHTML=["第1章","第2章","第3章","第4章","第5章"].map(k=>{let v=s.ch[k]||{c:0,t:0};return bar(k,v.t?Math.round(v.c/v.t*100):0)}).join("");let r=Object.entries(s.weak).sort((a,b)=>b[1]-a[1]);$("weakRanking").innerHTML=r.length?r.map((x,i)=>`<div class="rankItem"><b>${i+1}位 ${x[0]}</b><br>誤答数：${x[1]}</div>`).join(""):"苦手データなし"}
 function radar(){let c=$("radarCanvas"),ctx=c.getContext("2d"),s=all(),labs=["第1章","第2章","第3章","第4章","第5章"],cx=160,cy=160,r=110;ctx.clearRect(0,0,320,320);ctx.strokeStyle="#ddd";ctx.fillStyle="#111827";ctx.font="13px sans-serif";for(let ring=1;ring<=5;ring++){ctx.beginPath();labs.forEach((l,i)=>{let a=-Math.PI/2+i*2*Math.PI/5,rr=r*ring/5,x=cx+Math.cos(a)*rr,y=cy+Math.sin(a)*rr;i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.closePath();ctx.stroke()}ctx.beginPath();labs.forEach((l,i)=>{let v=s.ch[l]||{c:0,t:0},rate=v.t?v.c/v.t:0,a=-Math.PI/2+i*2*Math.PI/5,rr=r*rate,x=cx+Math.cos(a)*rr,y=cy+Math.sin(a)*rr;i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.closePath();ctx.fillStyle="rgba(17,24,39,.25)";ctx.fill();ctx.strokeStyle="#111827";ctx.stroke();labs.forEach((l,i)=>{let a=-Math.PI/2+i*2*Math.PI/5,x=cx+Math.cos(a)*(r+24),y=cy+Math.sin(a)*(r+24);ctx.fillStyle="#111827";ctx.fillText(l,x-18,y)})}
-function feedback(){let st=arr(),s=all();if(!st.graded)return"現在のセットは未採点です。";return`登録販売者 学習フィードバック
-日付：${exam().date||today()}
-${exam().title} ${set().title}
-
-今回正答率：${st.score.rate}%（${st.score.correct}/${st.score.total}）
-累計正答率：${s.rate}%（${s.correct}/${s.total}）
-今日一番危ない知識：${Object.entries(s.weak).sort((a,b)=>b[1]-a[1])[0]?.[0]||"大きな偏りなし"}
-次にやること：間違えた問題を3日後・7日後・14日後に復習。`}
+function feedback(){let st=arr(),s=all();if(!st.graded)return"現在のセットは未採点です。";let imp=st.chatgptResult;let danger=imp?.dangerKnowledge||Object.entries(s.weak).sort((a,b)=>b[1]-a[1])[0]?.[0]||"大きな偏りなし";let extra=imp?`\n\n【ChatGPT取り込み講評】\n${imp.feedback||""}${imp.nextTasks?`\n\n次回タスク：${imp.nextTasks}`:""}`:"";return`登録販売者 学習フィードバック\n日付：${exam().date||today()}\n${exam().title} ${set().title}\n\n今回正答率：${st.score.rate}%（${st.score.correct}/${st.score.total}）\n累計正答率：${s.rate}%（${s.correct}/${s.total}）\n今日一番危ない知識：${danger}\n次にやること：間違えた問題を3日後・7日後・14日後に復習。${extra}`}
 function calendar(){let done=new Set();Object.values(store).forEach(st=>st.updated&&done.add(st.updated.slice(0,10)));let html="";for(let i=27;i>=0;i--){let d=new Date();d.setDate(d.getDate()-i);let x=iso(d);html+=`<div class="dayCell ${done.has(x)?"done":""} ${x===iso()?"today":""}">${d.getMonth()+1}/${d.getDate()}</div>`}$("studyCalendar").innerHTML=html}function streak(){let done=new Set();Object.values(store).forEach(st=>st.updated&&done.add(st.updated.slice(0,10)));let n=0,d=new Date();while(done.has(iso(d))){n++;d.setDate(d.getDate()-1)}return n}
 function dueItems(){let items=[];data.exams.forEach(e=>e.sets.forEach(s=>{let st=arr(e.id,s.id),list=s.questions||[];(st.review||[]).forEach(r=>list[r.q]&&items.push({e,s,r,q:list[r.q]}))}));return items.sort((a,b)=>a.r.due.localeCompare(b.r.due))}function reviews(){let items=dueItems();$("reviewSchedule").innerHTML=items.length?items.slice(0,30).map(x=>`<div class="reviewDue"><b>${x.r.due}</b> / ${x.r.interval}日後<br>${x.e.title} ${x.s.title} 問${x.q.no}</div>`).join(""):"復習予定なし"}function dueNotice(){let due=dueItems().filter(x=>x.r.due<=iso());$("dueNotice").classList.toggle("hidden",!due.length);$("dueNotice").innerHTML=due.length?`<b>復習通知</b><br>今日までに復習すべき問題が ${due.length} 問あります。分析 → 復習予定を確認してください。`:""}
 function wrong(){let items=[];data.exams.forEach(e=>e.sets.forEach(s=>{let st=arr(e.id,s.id),list=s.questions||[];if(st.graded)st.wrong.forEach(i=>list[i]&&items.push({e,s,q:list[i],ans:st.answers[i]}))}));$("wrongList").innerHTML=items.length?items.map(x=>`<div class="wrongItem"><b>${x.e.title} ${x.s.title} 問${x.q.no}</b><p>${esc(x.q.text)}</p><p>あなた：${x.ans||"未"} / 正解：${x.q.answer}</p><p class="note">${esc(x.q.explanation||"")}</p></div>`).join(""):"<div class='card'>間違えた問題はまだありません。</div>"}
@@ -32,4 +25,74 @@ function ans(allset=false){let e=exam();return allset?["【登録販売者 解�
 function getPrompt(){let n=Math.min(data.exams.length+1,100);copy(`登録販売者試験の今日の30問を、アプリ取り込み用JSONだけで作成してください。日付：${today()}、id：day-${String(n).padStart(3,"0")}、title：第${n}回、setsは第1セットのみ、問題は30問、各問に no/chapter/source/answer/text/explanation を入れてください。公式公開過去問を最優先し、必要なら改題してください。`);document.querySelector('[data-tab="import"]').click()}
 function importJson(){try{let o=JSON.parse($("importBox").value.trim());if(o.exam)o=o.exam;if(!o.id||!o.title||!Array.isArray(o.sets))throw 0;if(!o.date)o.date=today();let i=custom.findIndex(e=>e.id===o.id);if(i>=0)custom[i]=o;else if(data.exams.length+custom.length<100)custom.push(o);saveC();toast("取り込みました");setTimeout(()=>location.reload(),500)}catch(e){alert("JSON形式が正しくありません")}}function tpl(){copy(JSON.stringify({id:"day-002",title:"第2回",date:today(),sets:[{id:"day-002-set-1",title:"第1セット",note:"全120問中 1/4",questions:[{no:1,chapter:"第1章",source:"改題",answer:"○",text:"ここに問題文",explanation:"ここに解説"}]}]},null,2))}function registered(){$("registeredList").innerHTML=data.exams.map(e=>`<div class="registered"><b>${e.date||""} ${esc(e.title)}</b><br>${e.sets.map(s=>s.title+"("+(s.questions||[]).length+"問)").join(" / ")}</div>`).join("")}
 function restore(){try{let o=JSON.parse($("restoreBox").value.trim());if(o.answers)store=o.answers;if(o.customExams)custom=o.customExams;save();saveC();location.reload()}catch(e){alert("復元JSONが正しくありません")}}function printQ(){let w=window.open("","_blank"),e=exam();w.document.write(`<html><body><h1>${e.date||""} ${e.title} 問題PDF</h1>${e.sets.map(s=>`<h2>${s.title}</h2>${(s.questions||[]).map(q=>`<div><b>問${q.no}</b> ${q.chapter}/${q.source}<br>${esc(q.text)}<hr></div>`).join("")}`).join("")}</body></html>`);w.document.close();w.print()}function printF(){let w=window.open("","_blank");w.document.write("<pre>"+esc(feedback())+"</pre>");w.document.close();w.print()}function startTimer(sec,wm){wrongMock=wm;if(wm){view="weak";viewList=weakList();index=0}examMode=true;remaining=sec;document.querySelector('[data-tab="solve"]').click();tick();timer=setInterval(tick,1000)}function tick(){$("examTimer").textContent=String(Math.floor(remaining/60)).padStart(2,"0")+":"+String(remaining%60).padStart(2,"0");if(remaining--<=0)finish()}function finish(){if(timer)clearInterval(timer);examMode=false;wrongMock=false;grade();render()}function shuffle(a){return [...a].sort(()=>Math.random()-0.5)}function copy(t){return navigator.clipboard.writeText(t).then(()=>toast()).catch(()=>toast("コピー失敗"))}
+
+function importResultJson(){
+  try{
+    let raw=$("resultImportBox").value.trim();
+    if(!raw) return toast("JSONを貼り付けてください");
+    let r=JSON.parse(raw);
+    if(r.type && r.type!=="touhan_result") throw 0;
+    let eId=r.examId||examId, sId=r.setId||setId;
+    let ex=data.exams.find(e=>e.id===eId); if(!ex) throw 0;
+    let se=ex.sets.find(s=>s.id===sId); if(!se) throw 0;
+    let st=arr(eId,sId);
+    if(typeof r.answerString==="string"){
+      st.answers=r.answerString.split("").map(x=>x==="○"||x==="×"?x:"");
+    }else if(Array.isArray(r.answers)){
+      st.answers=r.answers.map(x=>x==="○"||x==="×"?x:"");
+    }
+    let total=(se.questions||[]).length||st.answers.length||30;
+    let wrong=Array.isArray(r.wrongNumbers)?r.wrongNumbers.map(n=>Number(n)-1).filter(i=>i>=0):[];
+    if(!wrong.length && se.questions && se.questions.length){
+      wrong=[];
+      se.questions.forEach((q,i)=>{ if(st.answers[i]!==q.answer) wrong.push(i); });
+    }
+    let correct=typeof r.correct==="number"?r.correct:total-wrong.length;
+    st.graded=true;
+    st.wrong=wrong;
+    st.score={correct,total,rate:typeof r.rate==="number"?r.rate:(total?Math.round(correct/total*100):0)};
+    st.chatgptResult={
+      importedAt:new Date().toISOString(),
+      date:r.date||ex.date||today(),
+      cumulativeRate:r.cumulativeRate??null,
+      chapterRates:r.chapterRates||null,
+      dangerKnowledge:r.dangerKnowledge||"",
+      feedback:r.feedback||"",
+      nextTasks:r.nextTasks||"",
+      raw:r
+    };
+    st.manualFeedback=[r.feedback||"",r.dangerKnowledge?("今日一番危ない知識："+r.dangerKnowledge):"",r.nextTasks?("次回タスク："+r.nextTasks):""].filter(Boolean).join("\n\n");
+    st.updated=new Date().toISOString();
+    st.review=wrong.flatMap(i=>[3,7,14].map(d=>({q:i,due:add(new Date(),d),interval:d,done:false})));
+    save();
+    examId=eId; setId=sId; index=0;
+    selectors(); render();
+    toast("採点結果を取り込みました");
+  }catch(e){
+    alert("採点結果JSONの形式が正しくありません。");
+  }
+}
+function copyResultTemplate(){
+  let st=arr();
+  let tpl={
+    type:"touhan_result",
+    date: exam().date || today(),
+    examId: examId,
+    setId: setId,
+    examTitle: exam().title,
+    setTitle: set().title,
+    answerString: st.answers.map(x=>x||"未").join(""),
+    correct: 0,
+    total: (qs()||[]).length || 30,
+    rate: 0,
+    cumulativeRate: 0,
+    chapterRates:{"第1章":0,"第2章":0,"第3章":0,"第4章":0,"第5章":0},
+    wrongNumbers:[],
+    dangerKnowledge:"ここに今日一番危ない知識",
+    feedback:"ここに採点講評",
+    nextTasks:"ここに次回の復習・重点項目"
+  };
+  copy(JSON.stringify(tpl,null,2));
+}
+
 if(localStorage.getItem(LOGIN)==="ok")boot();if("serviceWorker"in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js").catch(()=>{}));
