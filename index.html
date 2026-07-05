@@ -65,7 +65,8 @@
 
 <section id="solve" class="page hidden">
   <div class="card">
-    <div class="selectors">
+    <div class="selectors selectors3">
+      <label>カテゴリ<select id="categorySelect"></select></label>
       <label>回<select id="examSelect"></select></label>
       <label>セット<select id="setSelect"></select></label>
     </div>
@@ -73,7 +74,11 @@
     <div class="bar"><span id="qProgress"></span><span id="unanswered"></span></div>
   </div>
 
-  <div class="card timerPanel">
+  <div id="timerShowCard" class="card timerShowCard hidden">
+    <button id="showTimerBtn" class="subBtn">タイマーを表示</button>
+  </div>
+
+  <div class="card timerPanel" data-timer-panel="solve">
     <div class="timerHead">
       <div>
         <h3>本番タイマー</h3>
@@ -86,6 +91,7 @@
       <button type="button" class="subBtn timerPauseBtn">一時停止</button>
       <button type="button" class="subBtn timerResumeBtn">再開</button>
       <button type="button" class="subBtn timerResetBtn">リセット</button>
+      <button type="button" class="subBtn timerHideBtn">非表示</button>
     </div>
     <button type="button" class="dangerBtn timerFinishBtn">終了して自己採点</button>
   </div>
@@ -113,6 +119,7 @@
 <section id="import" class="page hidden">
   <div class="card">
     <h2>今日の問題JSONを追加</h2>
+    <label>カテゴリ<select id="importCategorySelect"></select></label>
     <textarea id="importBox" placeholder="ここに問題JSONを貼り付け"></textarea>
     <button id="importJson" class="mainBtn">問題JSONを取り込み</button>
     <button id="copyTemplate" class="subBtn">テンプレをコピー</button>

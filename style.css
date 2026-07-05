@@ -12,3 +12,10 @@
 .timerPanel.paused{border-color:#f59e0b;background:#fffbeb}
 .timerPanel.finished{border-color:#dc2626;background:#fef2f2}
 @media(max-width:420px){.timerHead{align-items:flex-start}.timerDisplay{font-size:30px}.timerControls{grid-template-columns:1fr 1fr 1fr}}
+
+/* v10.1 category + timer visibility */
+.selectors3{grid-template-columns:1fr 1fr 1fr}
+.categoryBadge{display:inline-block;border-radius:999px;background:#eef2ff;color:#3730a3;font-size:11px;font-weight:900;padding:3px 8px;margin-left:6px}
+.timerShowCard{text-align:center}
+.timerShowCard .subBtn{margin-top:0}
+@media(max-width:420px){.selectors3{grid-template-columns:1fr}.timerControls{grid-template-columns:1fr 1fr}}

@@ -1,7 +1,7 @@
 {
   "meta": {
     "appName": "登録販売者 試験対策",
-    "version": "10.0-timer",
+    "version": "10.1-category-timer",
     "examDates": [
       {
         "label": "第1回試験",
@@ -268,27 +268,37 @@
               "text": "副作用情報は、医薬品の適正使用に役立てられる。",
               "explanation": "安全対策に活用されます。"
             }
-          ]
+          ],
+          "category": "one_by_one",
+          "category_label": "一問一答"
         },
         {
           "id": "day-001-set-2",
           "title": "第2セット",
           "note": "未登録",
-          "questions": []
+          "questions": [],
+          "category": "one_by_one",
+          "category_label": "一問一答"
         },
         {
           "id": "day-001-set-3",
           "title": "第3セット",
           "note": "未登録",
-          "questions": []
+          "questions": [],
+          "category": "one_by_one",
+          "category_label": "一問一答"
         },
         {
           "id": "day-001-set-4",
           "title": "第4セット",
           "note": "未登録",
-          "questions": []
+          "questions": [],
+          "category": "one_by_one",
+          "category_label": "一問一答"
         }
-      ]
+      ],
+      "category": "one_by_one",
+      "category_label": "一問一答"
     }
   ]
 }
