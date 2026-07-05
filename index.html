@@ -132,6 +132,29 @@
   <div class="card">
     <h2>問題データ管理</h2>
     <p class="note">追加した問題JSONやサンプル問題を削除できます。標準内蔵問題は削除不可ですが、回答履歴は削除できます。</p>
+    <div class="manageFilters">
+      <label>表示
+        <select id="manageFilter">
+          <option value="custom">追加問題のみ</option>
+          <option value="all">すべて</option>
+          <option value="one_by_one">一問一答</option>
+          <option value="exam_style">本番形式</option>
+          <option value="sample">サンプル</option>
+          <option value="official">標準内蔵</option>
+        </select>
+      </label>
+      <label>並び替え
+        <select id="manageSort">
+          <option value="new">新しい順</option>
+          <option value="old">古い順</option>
+          <option value="title">タイトル順</option>
+          <option value="questions">問題数が多い順</option>
+        </select>
+      </label>
+      <label>検索
+        <input id="manageSearch" placeholder="日付・タイトル・セット名で検索">
+      </label>
+    </div>
     <div id="examManageList"></div>
   </div>
 </section>
@@ -149,6 +172,7 @@
     <button id="startExamMode" class="mainBtn">30問 本番モード開始</button>
     <button id="startMockMode" class="subBtn">120問 模試モード開始</button>
     <button id="wrongMockMode" class="subBtn">間違えた問題だけ模試</button>
+    <p class="note">本番モード開始時は確認画面を表示します。タイマーなしで解く場合は、問題タブから通常通り解いてください。</p>
     <div class="timerControls">
       <button type="button" class="subBtn timerPauseBtn">一時停止</button>
       <button type="button" class="subBtn timerResumeBtn">再開</button>
@@ -228,6 +252,19 @@
 </div>
 
 <div id="toast"></div>
+<div id="timerStartModal" class="modal hidden">
+  <div class="modalBox">
+    <h2>本番モード</h2>
+    <p id="timerStartText" class="note"></p>
+    <label>制限時間（分）
+      <input id="timerStartMinutes" type="number" min="1" max="300" inputmode="numeric">
+    </label>
+    <div id="timerCountdown" class="countdownText hidden">3</div>
+    <button id="timerStartConfirm" class="mainBtn">開始</button>
+    <button id="timerStartCancel" class="subBtn">戻る</button>
+  </div>
+</div>
+
 <script src="./app.js"></script>
 </body>
 </html>
