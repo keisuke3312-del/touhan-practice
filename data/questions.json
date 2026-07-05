@@ -1,7 +1,7 @@
 {
   "meta": {
     "appName": "登録販売者 試験対策",
-    "version": "9.0-result-import",
+    "version": "10.0-timer",
     "examDates": [
       {
         "label": "第1回試験",

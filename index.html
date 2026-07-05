@@ -73,6 +73,23 @@
     <div class="bar"><span id="qProgress"></span><span id="unanswered"></span></div>
   </div>
 
+  <div class="card timerPanel">
+    <div class="timerHead">
+      <div>
+        <h3>本番タイマー</h3>
+        <div class="timerStatus">停止中</div>
+      </div>
+      <div class="timerDisplay">30:00</div>
+    </div>
+    <div class="timerMeta"><span class="timerModeLabel">30問</span><span class="timerAnswered">0/30</span></div>
+    <div class="timerControls">
+      <button type="button" class="subBtn timerPauseBtn">一時停止</button>
+      <button type="button" class="subBtn timerResumeBtn">再開</button>
+      <button type="button" class="subBtn timerResetBtn">リセット</button>
+    </div>
+    <button type="button" class="dangerBtn timerFinishBtn">終了して自己採点</button>
+  </div>
+
   <div class="card modes">
     <button id="normalModeBtn" class="subBtn">通常</button>
     <button id="weakModeBtn" class="subBtn">苦手だけ</button>
@@ -104,13 +121,24 @@
 </section>
 
 <section id="exam" class="page hidden">
-  <div class="card">
+  <div class="card timerPanel">
     <h2>本番・模試モード</h2>
-    <div id="examTimer" class="big">30:00</div>
+    <div class="timerHead">
+      <div>
+        <div class="timerStatus">停止中</div>
+        <div class="timerMeta"><span class="timerModeLabel">30問</span><span class="timerAnswered">0/30</span></div>
+      </div>
+      <div id="examTimer" class="big timerDisplay">30:00</div>
+    </div>
     <button id="startExamMode" class="mainBtn">30問 本番モード開始</button>
     <button id="startMockMode" class="subBtn">120問 模試モード開始</button>
     <button id="wrongMockMode" class="subBtn">間違えた問題だけ模試</button>
-    <button id="finishExamMode" class="dangerBtn">終了して自己採点</button>
+    <div class="timerControls">
+      <button type="button" class="subBtn timerPauseBtn">一時停止</button>
+      <button type="button" class="subBtn timerResumeBtn">再開</button>
+      <button type="button" class="subBtn timerResetBtn">リセット</button>
+    </div>
+    <button id="finishExamMode" class="dangerBtn timerFinishBtn">終了して自己採点</button>
   </div>
 </section>
 
