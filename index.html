@@ -33,6 +33,7 @@
   <button data-tab="home" class="active">ホーム</button>
   <button data-tab="solve">問題</button>
   <button data-tab="import">追加</button>
+  <button data-tab="manage">問題管理</button>
   <button data-tab="exam">本番</button>
   <button data-tab="stats">分析</button>
   <button data-tab="tools">管理</button>
@@ -127,6 +128,14 @@
   <div class="card"><h2>登録済み問題</h2><div id="registeredList"></div></div>
 </section>
 
+<section id="manage" class="page hidden">
+  <div class="card">
+    <h2>問題データ管理</h2>
+    <p class="note">追加した問題JSONやサンプル問題を削除できます。標準内蔵問題は削除不可ですが、回答履歴は削除できます。</p>
+    <div id="examManageList"></div>
+  </div>
+</section>
+
 <section id="exam" class="page hidden">
   <div class="card timerPanel">
     <h2>本番・模試モード</h2>
@@ -189,8 +198,13 @@
 
   <div class="card">
     <h2>バージョン</h2>
-    <div class="versionBox">Version <b id="appVersion">v10.4.0</b><br>Build <b id="appBuild">2026-07-06</b></div>
+    <div class="versionBox">Version <b id="appVersion">v10.4.1</b><br>Build <b id="appBuild">2026-07-06</b></div>
     <div class="note changelog">
+      <b>v10.4.1</b><br>
+      ・問題データ管理画面を追加<br>
+      ・取り込み済み問題JSONの削除に対応<br>
+      ・セット単位の回答履歴削除に対応<br>
+      ・サンプル問題をアプリ本体ZIPから除外<br><br>
       <b>v10.4.0</b><br>
       ・アプリ内バージョン表示を追加<br>
       ・Service Workerキャッシュ名をv10.4.0へ更新<br>
