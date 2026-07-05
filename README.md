@@ -1,6 +1,12 @@
-# 登録販売者 試験対策 Practical Ver10.4.2
+# 登録販売者 試験対策 Practical Ver10.4.3
 
 初期パスワード: touhan2026
+
+
+## Ver10.4.3追加・修正
+- questions.jsonのmetaを appVersion / questionFormatVersion / questionPackVersion に分離
+- 2026/07/05 第2回 第1〜第4セット（各30問・計120問）を追加
+- Service Workerキャッシュ名を touhan-v10-4-3 に更新
 
 ## Ver10.4.2追加・修正
 - 問題データ管理画面を追加
