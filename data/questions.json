@@ -1,7 +1,7 @@
 {
   "meta": {
     "appName": "登録販売者 試験対策",
-    "version": "10.1-category-timer",
+    "version": "10.2-exam-choices",
     "examDates": [
       {
         "label": "第1回試験",

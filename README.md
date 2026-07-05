@@ -1,6 +1,13 @@
-# 登録販売者 試験対策 Practical Ver10.1 Category + Timer Visibility
+# 登録販売者 試験対策 Practical Ver10.2 Exam Choices
 
 初期パスワード: touhan2026
+
+Ver10.2追加:
+- 本番形式JSONの4択・5択 `choices` 表示に対応
+- `choices` がある問題は選択肢ボタンを表示
+- `choices` がない問題は従来通り○×で表示
+- 本番形式JSONのルート直下 `questions` 形式も取り込み可能
+- 採点・ジャンプ表示・解説表示を4択/○×両対応
 
 Ver10.1追加:
 - 問題カテゴリ追加（一問一答 / 本番形式）
