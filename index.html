@@ -131,7 +131,7 @@
 <section id="manage" class="page hidden">
   <div class="card">
     <h2>問題データ管理</h2>
-    <p class="note">「履歴削除」は回答だけを消し、問題は残ります。「セット削除」「この回を削除」は指定対象だけを削除します。削除前の状態は復元できます。</p><div class="manageActions"><button id="restoreLastDeleted" class="smallBtn">直前の削除を復元</button><button id="deleteAllCustom" class="dangerBtn">追加問題を全削除</button></div>
+    <p class="note">「履歴削除」は回答だけを消します。「セット削除」「この回を削除」は標準内蔵・追加問題のどちらにも使えます。削除前の状態は復元できます。</p><div class="manageActions"><button id="restoreLastDeleted" class="smallBtn">直前の削除を復元</button><button id="deleteAllCustom" class="dangerBtn">追加問題を全削除</button><button id="deleteAllBuiltin" class="dangerBtn">標準内蔵を全削除</button><button id="restoreAllBuiltin" class="smallBtn">標準内蔵を復元</button></div>
     <div class="manageFilters">
       <label>表示
         <select id="manageFilter">
@@ -222,9 +222,9 @@
 
   <div class="card">
     <h2>バージョン</h2>
-    <div class="versionBox">Version <b id="appVersion">v10.4.3</b><br>Build <b id="appBuild">2026-07-06</b></div>
+    <div class="versionBox">Version <b id="appVersion">v10.4.5</b><br>Build <b id="appBuild">2026-07-12</b></div>
     <div class="note changelog">
-      <b>v10.4.3</b><br>
+      <b>v10.4.5</b><br>      ・標準内蔵問題のセット削除・回削除・全削除に対応<br>      ・標準内蔵問題の復元と直前削除の復元に対応<br>      ・削除対象を標準内蔵／追加問題／回答履歴で完全分離<br>      ・Service Workerキャッシュ名をv10.4.5へ更新<br><br>      <b>v10.4.4</b><br>      ・本番形式カテゴリ互換と安全削除を改善<br><br>      <b>v10.4.3</b><br>
       ・questions.jsonのmetaをappVersion/questionFormatVersion/questionPackVersionへ分離<br>
       ・2026/07/05 第2回 120問（一問一答）を追加<br>
       ・Service Workerキャッシュ名をv10.4.3へ更新<br><br>
