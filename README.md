@@ -1,4 +1,4 @@
-# 登録販売者 試験対策 Practical Ver10.4.6
+# 登録販売者 試験対策 Practical Ver10.4.8
 
 - iPhoneホーム画面アイコンをPNGで復元
 - manifest / apple-touch-icon / Service Workerを更新
