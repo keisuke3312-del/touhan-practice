@@ -131,7 +131,7 @@
 <section id="manage" class="page hidden">
   <div class="card">
     <h2>問題データ管理</h2>
-    <p class="note">追加した問題JSONやサンプル問題を削除できます。標準内蔵問題は削除不可ですが、回答履歴は削除できます。</p>
+    <p class="note">「履歴削除」は回答だけを消し、問題は残ります。「セット削除」「この回を削除」は指定対象だけを削除します。削除前の状態は復元できます。</p><div class="manageActions"><button id="restoreLastDeleted" class="smallBtn">直前の削除を復元</button><button id="deleteAllCustom" class="dangerBtn">追加問題を全削除</button></div>
     <div class="manageFilters">
       <label>表示
         <select id="manageFilter">
@@ -249,7 +249,7 @@
 
   <div class="card">
     <button id="resetSet" class="dangerBtn">現在のセットをリセット</button>
-    <button id="resetAll" class="dangerBtn">全データをリセット</button>
+    <button id="resetAll" class="dangerBtn">回答履歴を全削除</button>
   </div>
 </section>
 </main>
