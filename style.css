@@ -32,3 +32,5 @@
 
 /* v10.4.2 */
 .manageFilters{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0 14px}.manageFilters label:last-child{grid-column:1/-1}.sampleBadge{font-size:12px;border-radius:999px;background:#fef3c7;color:#92400e;padding:4px 8px;font-weight:800}.modal{position:fixed;inset:0;z-index:200;background:rgba(17,24,39,.48);display:grid;place-items:center;padding:18px}.modalBox{width:min(420px,100%);background:white;border-radius:22px;border:1px solid #e5e7eb;padding:18px;box-shadow:0 12px 40px rgba(0,0,0,.25)}.countdownText{font-size:56px;font-weight:900;text-align:center;margin:12px 0;color:#111827}@media(max-width:420px){.manageFilters{grid-template-columns:1fr}}
+
+.selectionContext{margin:10px 0;padding:10px 12px;border-radius:10px;background:#eef2ff;border:1px solid #c7d2fe;font-weight:700;color:#1f2937;word-break:break-word}
