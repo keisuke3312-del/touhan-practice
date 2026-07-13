@@ -183,7 +183,7 @@
   </details>
   <details id="dataPdf" class="card dataSection">
     <summary><span>問題PDF</span><small>教材として保存・共有</small></summary>
-    <div class="dataSectionBody"><p class="note">現在選択している問題回を、端末の印刷機能からPDFとして保存します。</p><label>出力内容<select id="pdfOutputMode"><option value="questions">問題のみ</option><option value="answers">問題＋解答</option><option value="full">問題＋解答＋解説</option></select></label><button id="printQuestions" class="subBtn">現在の問題をPDF出力</button></div>
+    <div class="dataSectionBody"><p class="note">現在選択している問題回をPDF用ページで開きます。ページ上部の「PDF保存画面を開く」から保存し、「アプリに戻る」で戻れます。</p><div class="pdfActionGrid"><button id="printQuestionsOnly" class="subBtn">問題PDFを開く</button><button id="printQuestionsFull" class="mainBtn">問題＋解答＋解説PDFを開く</button></div><p class="note">詳しい解説が未作成の問題は、採点用結果JSONをChatGPTへ送り、返された採点結果JSONを読み込むと補完されます。</p></div>
   </details>
   <details id="dataBackup" class="card dataSection">
     <summary><span>バックアップ</span><small>端末移行・復元</small></summary>
@@ -196,7 +196,7 @@
 </section>
 <section id="settings" class="page hidden">
   <div class="card"><h2>設定</h2><button id="resetSet" class="subBtn">現在の回答をリセット</button><button id="resetAll" class="dangerBtn">回答履歴を全削除</button></div>
-  <div class="card"><h2>バージョン</h2><div class="versionBox">Version <b id="appVersion">v13.0.1</b><br>Build <b id="appBuild">2026-07-14</b></div></div>
+  <div class="card"><h2>バージョン</h2><div class="versionBox">Version <b id="appVersion">v13.0.2</b><br>Build <b id="appBuild">2026-07-14</b></div></div>
 </section>
 
 </main>
