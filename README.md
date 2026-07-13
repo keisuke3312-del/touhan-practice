@@ -1,5 +1,3 @@
-# 登録販売者 試験対策 Practical Ver11.0.0
+# 登録販売者 問題解答アプリ v12.0.2
 
-- iPhoneホーム画面アイコンをPNGで復元
-- manifest / apple-touch-icon / Service Workerを更新
-- v10.4.5の安全削除機能を維持
+学習セッション復元、間違えた問題一覧、データ画面統合、任意タイマー、自己完結型採点JSONに対応。
