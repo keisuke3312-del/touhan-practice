@@ -32,12 +32,12 @@
 <nav>
   <button data-tab="home" class="active">ホーム</button>
   <button data-tab="solve">問題</button>
-  <button data-tab="import">追加</button>
-  <button data-tab="manage">問題管理</button>
-  <button data-tab="exam">本番</button>
+  <button data-tab="wrong">間違い</button>
   <button data-tab="stats">分析</button>
-  <button data-tab="tools">管理</button>
+  <button data-tab="data">データ</button>
 </nav>
+<button id="timerFab" class="timerFab" aria-label="タイマー">⏱</button>
+<button id="settingsFab" class="settingsFab" aria-label="設定">⚙</button>
 
 <main>
 <section id="home" class="page">
@@ -45,6 +45,12 @@
     <div class="homeCardHead"><h2>試験まで</h2><button id="getTodayJson" class="smallBtn homeJsonBtn">問題JSONを取得</button></div>
     <div id="countdown" class="countdownGrid"></div>
     <div id="examProgress" class="note"></div>
+  </div>
+
+
+  <div id="resumeCard" class="card resumeCard hidden">
+    <div><b>前回の続き</b><div id="resumeLabel" class="note"></div></div>
+    <button id="resumeStudy" class="mainBtn compactBtn">再開</button>
   </div>
 
   <div id="dueNotice" class="card notice hidden"></div>
@@ -112,78 +118,17 @@
   </div>
 
   <div class="card">
-    <button id="copyCurrent" class="mainBtn">このセットの回答をコピー</button>
+    <button id="copyCurrent" class="mainBtn">採点用結果JSONをコピー</button>
     <button id="openChatGPT" class="subBtn">ChatGPTで採点</button>
   </div>
 </section>
 
-<section id="import" class="page hidden">
-  <div class="card">
-    <h2>今日の問題JSONを追加</h2>
-    <label>カテゴリ<select id="importCategorySelect"></select></label>
-    <textarea id="importBox" placeholder="ここに問題JSONを貼り付け"></textarea>
-    <button id="importJson" class="mainBtn">問題JSONを取り込み</button>
-    <button id="clearImportBox" class="subBtn">入力内容を全て消す</button>
-    <button id="copyTemplate" class="subBtn">テンプレをコピー</button>
-  </div>
-  <div class="card"><h2>登録済み問題</h2><div id="registeredList"></div></div>
-</section>
 
-<section id="manage" class="page hidden">
-  <div class="card">
-    <h2>問題データ管理</h2>
-    <p class="note">「履歴削除」は回答だけを消します。「セット削除」「この回を削除」は標準内蔵・追加問題のどちらにも使えます。削除前の状態は復元できます。</p><div class="manageActions"><button id="restoreLastDeleted" class="smallBtn">直前の削除を復元</button><button id="repairStorage" class="smallBtn">保存データを修復</button><button id="deleteAllCustom" class="dangerBtn">追加問題を全削除</button><button id="deleteAllBuiltin" class="dangerBtn">標準内蔵を全削除</button><button id="restoreAllBuiltin" class="smallBtn">標準内蔵を復元</button></div>
-    <div class="manageFilters">
-      <label>表示
-        <select id="manageFilter">
-          <option value="custom">追加問題のみ</option>
-          <option value="all">すべて</option>
-          <option value="one_by_one">一問一答</option>
-          <option value="practice60">総合演習60問</option>
-          <option value="exam_style">本番形式120問</option>
-          <option value="sample">サンプル</option>
-          <option value="official">標準内蔵</option>
-        </select>
-      </label>
-      <label>並び替え
-        <select id="manageSort">
-          <option value="new">新しい順</option>
-          <option value="old">古い順</option>
-          <option value="title">タイトル順</option>
-          <option value="questions">問題数が多い順</option>
-        </select>
-      </label>
-      <label>検索
-        <input id="manageSearch" placeholder="日付・タイトル・セット名で検索">
-      </label>
-    </div>
-    <div id="examManageList"></div>
-  </div>
+<section id="wrong" class="page hidden">
+  <div class="card"><div class="homeCardHead"><h2>間違えた問題</h2><span id="wrongCount" class="categoryBadge">0問</span></div>
+  <div class="wrongFilters"><label>表示<select id="wrongFilter"><option value="all">すべて</option><option value="unreviewed">未復習</option><option value="reviewed">復習済み</option></select></label></div></div>
+  <div id="wrongQuestionsList"></div>
 </section>
-
-<section id="exam" class="page hidden">
-  <div class="card timerPanel">
-    <h2>本番・模試モード</h2>
-    <div class="timerHead">
-      <div>
-        <div class="timerStatus">停止中</div>
-        <div class="timerMeta"><span class="timerModeLabel">30問</span><span class="timerAnswered">0/30</span></div>
-      </div>
-      <div id="examTimer" class="big timerDisplay">30:00</div>
-    </div>
-    <button id="startExamMode" class="mainBtn">現在のセットで開始</button>
-    <button id="startMockMode" class="subBtn">120問 模試モード開始</button>
-    <button id="wrongMockMode" class="subBtn">間違えた問題だけ模試</button>
-    <p class="note">本番モード開始時は確認画面を表示します。タイマーなしで解く場合は、問題タブから通常通り解いてください。</p>
-    <div class="timerControls">
-      <button type="button" class="subBtn timerPauseBtn">一時停止</button>
-      <button type="button" class="subBtn timerResumeBtn">再開</button>
-      <button type="button" class="subBtn timerResetBtn">リセット</button>
-    </div>
-    <button id="finishExamMode" class="dangerBtn timerFinishBtn">終了して自己採点</button>
-  </div>
-</section>
-
 <section id="stats" class="page hidden">
   <div class="card"><h2>分析</h2><div id="statsBox"></div></div>
   <div class="card"><h2>章別レーダーチャート</h2><canvas id="radarCanvas" width="320" height="320"></canvas></div>
@@ -195,67 +140,37 @@
   <div class="card"><h2>苦手復習</h2><button id="showWrong" class="mainBtn">間違えた問題を見る</button></div>
   <div id="wrongList"></div>
 </section>
-
-<section id="tools" class="page hidden">
+<section id="data" class="page hidden">
   <div class="card">
-    <h2>採点・PDF</h2>
-    <button id="gradeCurrent" class="mainBtn">現在のセットを自己採点</button>
-    <button id="copyAll" class="subBtn">120問まとめてコピー</button>
-    <button id="printQuestions" class="subBtn">問題PDFを生成</button>
-    <button id="printFeedback" class="subBtn">フィードバックPDFを生成</button>
+    <h2>問題・採点データ</h2>
+    <label>問題カテゴリ<select id="importCategorySelect"></select></label>
+    <textarea id="importBox" placeholder="ここに問題JSONを貼り付け"></textarea>
+    <div class="buttonRow"><button id="importJson" class="mainBtn">問題JSONを取り込み</button><button id="clearImportBox" class="subBtn">問題欄を全消去</button></div>
   </div>
-
-
   <div class="card">
-    <h2>採点結果JSON取り込み</h2>
-    <p class="note">ChatGPTが返した採点結果JSONを貼り付けると、採点結果・危ない知識・講評・復習予定をこの端末に保存します。</p>
-    <textarea id="resultImportBox" placeholder='{"type":"touhan_result","examId":"day-001","setId":"day-001-set-1",...}'></textarea>
-    <button id="importResultJson" class="mainBtn">採点結果JSONを取り込み</button>
-    <button id="copyResultTemplate" class="subBtn">採点結果JSONテンプレをコピー</button>
+    <h2>採点結果JSON</h2>
+    <textarea id="resultImportBox" placeholder='{"type":"touhan_result",...}'></textarea>
+    <div class="buttonRow"><button id="importResultJson" class="mainBtn">採点結果JSONを取り込み</button><button id="clearResultImportBox" class="subBtn">採点欄を全消去</button></div>
   </div>
-
   <div class="card">
-    <h2>バックアップ・復元</h2>
-    <button id="exportData" class="subBtn">全データをコピー</button>
-    <textarea id="restoreBox" placeholder="バックアップJSONを貼り付け"></textarea>
-    <button id="restoreData" class="mainBtn">バックアップを復元</button>
+    <h2>問題データ管理</h2>
+    <div class="manageActions"><button id="restoreLastDeleted" class="smallBtn">直前の削除を復元</button><button id="repairStorage" class="smallBtn">保存データを修復</button><button id="deleteAllCustom" class="dangerBtn">追加問題を全削除</button><button id="deleteAllBuiltin" class="dangerBtn">標準内蔵を全削除</button><button id="restoreAllBuiltin" class="smallBtn">標準内蔵を復元</button></div>
+    <div class="manageFilters"><label>表示<select id="manageFilter"><option value="custom">追加問題のみ</option><option value="all">すべて</option><option value="one_by_one">一問一答</option><option value="practice60">総合演習60問</option><option value="exam_style">本番形式120問</option></select></label><label>並び替え<select id="manageSort"><option value="new">新しい順</option><option value="old">古い順</option><option value="title">タイトル順</option><option value="questions">問題数が多い順</option></select></label><label>検索<input id="manageSearch" placeholder="日付・タイトル・セット名で検索"></label></div>
+    <div id="examManageList"></div>
   </div>
-
-
-  <div class="card">
-    <h2>バージョン</h2>
-    <div class="versionBox">Version <b id="appVersion">v11.3.1</b><br>Build <b id="appBuild">2026-07-13</b></div>
-    <div class="note changelog">
-      <b>v11.3.1</b><br>      ・下部問題ナビを30問単位の通し番号表示へ変更<br>      ・後半は31〜60、本番後半は61〜90／91〜120を表示<br>      ・問題カード上部の番号と下部ナビを同期<br><br>      <b>v11.2.0</b><br>      ・問題画面をコンパクト化し、設問と選択肢を一画面で確認しやすく改善<br>      ・ホーム上部へ試験日カウントダウンを移動<br>      ・今日の問題は実行状況中心の表示に整理<br>      ・「開始」ボタンを廃止し、問題JSON取得を小型化<br><br>      <b>v11.1.3</b><br>      ・本番形式・総合演習の記述a〜dを段落表示<br>      ・記述記号を専用ラベルで明確化<br>      ・問題文と各記述の視認性を改善<br><br>      <b>v11.1.1</b><br>      ・問題JSON入力欄に「入力内容を全て消す」ボタンを追加<br>      ・取り込み済み問題には影響せず、入力欄だけを消去<br><br>      <b>v11.1.0</b><br>      ・総合演習60問を前半30問／後半30問で表示<br>      ・本番形式120問を前半60問／後半60問で表示<br>      ・一問一答だけ第1〜第4セット表記を維持<br>      ・カテゴリ切替時に前回問題が残る表示不具合を修正<br>      ・選択中の日付・カテゴリ・区分を常時表示<br>      ・通常／練習／開発の生成区分表示に対応<br><br>      <b>v11.0.0</b><br>      ・一問一答／総合演習60問／本番形式120問の3モードに対応<br>      ・本番形式は午前60問・午後60問を個別セット表示<br>      ・日付＋通常／練習／練習2のタイトル表示に対応<br>      ・現在のセット問題数に合わせてタイマー時間を自動設定<br>      ・薬をモチーフにした新アイコンへ変更<br><br>      ・削除した標準内蔵問題が再起動後に復活する不具合を修正<br>      ・削除直後に管理一覧から対象を即時除去<br>      ・削除完了メッセージに対象件数を表示<br>      ・問題が0件でもアプリを正常起動可能に修正<br><br>      <b>v10.4.7</b><br>      ・削除後に残った不整合データを起動時に自動修復<br>      ・存在しない問題ID・セットID・壊れた回答履歴を安全に整理<br>      ・「保存データを修復」ボタンを追加<br>      ・読み込み失敗時に原因を表示<br><br>      <b>v10.4.6</b><br>      ・iPhone用ホーム画面アイコンをPNGで復元<br>      ・PWAアイコン参照とキャッシュを修正<br><br>      <b>v10.4.5</b><br>      ・標準内蔵問題のセット削除・回削除・全削除に対応<br>      ・標準内蔵問題の復元と直前削除の復元に対応<br>      ・削除対象を標準内蔵／追加問題／回答履歴で完全分離<br>      ・Service Workerキャッシュ名をv10.4.6へ更新<br><br>      <b>v10.4.4</b><br>      ・本番形式カテゴリ互換と安全削除を改善<br><br>      <b>v10.4.3</b><br>
-      ・questions.jsonのmetaをappVersion/questionFormatVersion/questionPackVersionへ分離<br>
-      ・2026/07/05 第2回 120問（一問一答）を追加<br>
-      ・Service Workerキャッシュ名をv10.4.3へ更新<br><br>
-      <b>v10.4.1</b><br>
-      ・問題データ管理画面を追加<br>
-      ・取り込み済み問題JSONの削除に対応<br>
-      ・セット単位の回答履歴削除に対応<br>
-      ・サンプル問題をアプリ本体ZIPから除外<br><br>
-      <b>v10.4.0</b><br>
-      ・アプリ内バージョン表示を追加<br>
-      ・Service Workerキャッシュ名をv10.4.0へ更新<br>
-      ・一問一答／本番形式／セットごとの回答履歴分離を強化<br>
-      ・空セットで前セットの履歴が表示される問題を修正<br>
-      ・本番形式の4択・5択表示を安定化
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>無料運用チェック</h2>
-    <div class="note">この版はCloudflare Pages + GitHub + 端末保存のみで動きます。有料API・有料DB・課金サーバーは使っていません。</div>
-  </div>
-
-  <div class="card">
-    <button id="resetSet" class="dangerBtn">現在のセットをリセット</button>
-    <button id="resetAll" class="dangerBtn">回答履歴を全削除</button>
-  </div>
+  <div class="card"><h2>バックアップ</h2><button id="exportData" class="subBtn">全データをコピー</button><textarea id="restoreBox" placeholder="バックアップJSONを貼り付け"></textarea><button id="restoreData" class="mainBtn">バックアップを復元</button></div>
 </section>
+<section id="settings" class="page hidden">
+  <div class="card"><h2>設定</h2><button id="resetSet" class="subBtn">現在の回答をリセット</button><button id="resetAll" class="dangerBtn">回答履歴を全削除</button></div>
+  <div class="card"><h2>バージョン</h2><div class="versionBox">Version <b id="appVersion">v12.0.0</b><br>Build <b id="appBuild">2026-07-13</b></div></div>
+</section>
+
 </main>
+
 </div>
+
+
+<div id="timerModal" class="modal hidden"><div class="modalBox timerMini"><div class="homeCardHead"><h2>タイマー</h2><button id="closeTimerModal" class="smallBtn">閉じる</button></div><div class="timerDisplay">30:00</div><div class="timerStatus">停止中</div><label>分<input id="quickTimerMinutes" type="number" min="1" value="30"></label><div class="buttonRow"><button id="quickTimerStart" class="mainBtn">開始</button><button class="subBtn timerPauseBtn">一時停止</button><button class="subBtn timerResumeBtn">再開</button><button class="subBtn timerResetBtn">リセット</button></div></div></div>
 
 <div id="toast"></div>
 <div id="timerStartModal" class="modal hidden">
