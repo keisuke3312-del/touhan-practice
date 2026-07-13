@@ -129,6 +129,17 @@
   <div class="wrongFilters"><label>表示<select id="wrongFilter"><option value="all">すべて</option><option value="unreviewed">未復習</option><option value="reviewed">復習済み</option></select></label></div></div>
   <div id="wrongQuestionsList"></div>
 </section>
+
+<section id="reviewDetailPage" class="reviewDetailPage hidden" aria-hidden="true">
+  <div class="reviewDetailHeader">
+    <button id="closeReviewDetail" class="reviewCloseBtn" aria-label="復習詳細を閉じる">×</button>
+    <div>
+      <h2 id="reviewDetailTitle">復習詳細</h2>
+      <div id="reviewDetailMeta" class="note"></div>
+    </div>
+  </div>
+  <div id="reviewDetailBody" class="reviewDetailBody"></div>
+</section>
 <section id="stats" class="page hidden">
   <div class="card"><h2>分析</h2><div id="statsBox"></div></div>
   <div class="card"><h2>章別レーダーチャート</h2><canvas id="radarCanvas" width="320" height="320"></canvas></div>
@@ -162,7 +173,7 @@
 </section>
 <section id="settings" class="page hidden">
   <div class="card"><h2>設定</h2><button id="resetSet" class="subBtn">現在の回答をリセット</button><button id="resetAll" class="dangerBtn">回答履歴を全削除</button></div>
-  <div class="card"><h2>バージョン</h2><div class="versionBox">Version <b id="appVersion">v12.0.4</b><br>Build <b id="appBuild">2026-07-13</b></div></div>
+  <div class="card"><h2>バージョン</h2><div class="versionBox">Version <b id="appVersion">v12.0.5</b><br>Build <b id="appBuild">2026-07-13</b></div></div>
 </section>
 
 </main>
