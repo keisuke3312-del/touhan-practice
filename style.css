@@ -42,3 +42,55 @@
 .choiceTableLabel{display:inline-flex;align-items:center;justify-content:center;min-width:2rem;height:2rem;border-radius:.55rem;background:#111827;color:#fff;font-weight:800;text-transform:lowercase}
 .choiceTableValue{line-height:1.55;overflow-wrap:anywhere}
 .statementText{white-space:normal}
+
+
+/* v11.2.0 compact study UI */
+.homeCardHead{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.homeCardHead h2{margin:0}
+.homeJsonBtn{width:auto;white-space:nowrap;padding:8px 10px;font-size:12px}
+.countdownCard{padding:14px 16px}
+.countdownGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:12px 0 8px}
+.countdownItem{display:flex;align-items:baseline;justify-content:center;gap:4px;padding:10px;border-radius:14px;background:#f3f4f6}
+.countdownItem span{font-size:12px;color:#6b7280;margin-right:auto}
+.countdownItem strong{font-size:32px;line-height:1;font-variant-numeric:tabular-nums}
+.countdownItem small{font-size:12px;color:#6b7280}
+.todayStatusCard{padding:14px 16px}
+.todayProgressBig{font-size:28px;font-weight:900;font-variant-numeric:tabular-nums}
+.todayLabel{margin:8px 0 4px;color:#4b5563;font-size:13px;line-height:1.5}
+.todayExecutionStatus{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;background:#eef2ff;color:#3730a3;font-size:12px;font-weight:800}
+.questionFocusCard{padding:12px 14px}
+.questionFocusCard .qTop{align-items:flex-start}
+.questionFocusCard .qNo{font-size:17px}
+.questionFocusCard .badge{font-size:11px;padding:3px 7px}
+.questionFocusCard .qText{font-size:15px;line-height:1.58;margin:12px 0}
+.questionFocusCard .questionPrompt{font-size:15px;line-height:1.58;margin-bottom:8px}
+.questionFocusCard .statementBlock{grid-template-columns:30px 1fr;gap:8px;padding:8px 0;margin:0;border:0;border-bottom:1px solid #e5e7eb;border-radius:0;background:transparent}
+.questionFocusCard .statementBlock:last-child{border-bottom:0}
+.questionFocusCard .statementLabel{width:28px;height:28px;border-radius:8px;font-size:14px}
+.questionFocusCard .statementText{font-size:14px;line-height:1.55}
+.questionFocusCard .examChoices{gap:6px;margin-top:10px}
+.questionFocusCard .examChoice{padding:8px 10px;border-width:1px;border-radius:12px;gap:8px;line-height:1.45;font-size:14px}
+.questionFocusCard .choiceId{width:24px;height:24px;font-size:12px}
+.questionFocusCard .choiceText{font-weight:700}
+.questionFocusCard .choiceTable{gap:.2rem}
+.questionFocusCard .choiceTableRow{grid-template-columns:1.55rem 1fr;gap:.4rem}
+.questionFocusCard .choiceTableLabel{min-width:1.55rem;height:1.55rem;border-radius:.4rem;font-size:11px}
+.questionFocusCard .choiceTableValue{line-height:1.4}
+#solve>.card:first-child{padding:12px}
+#solve .selectionContext{margin:8px 0;padding:8px 10px;font-size:12px}
+#solve .bar{margin-top:6px;font-size:12px}
+#solve .modes{padding:8px;gap:6px}
+#solve .modes .subBtn{padding:9px;margin-top:0;font-size:13px}
+#solve .pager{gap:8px}
+#solve .pager button{padding:10px;border-radius:12px;border:0;background:#e5e7eb;font-weight:800}
+@media(max-width:420px){
+  main{padding:10px}
+  .card{margin-bottom:10px}
+  .countdownGrid{gap:8px}
+  .countdownItem{padding:8px}
+  .countdownItem strong{font-size:28px}
+  .questionFocusCard{padding:10px 11px}
+  .questionFocusCard .qText,.questionFocusCard .questionPrompt{font-size:14px;line-height:1.5}
+  .questionFocusCard .statementText{font-size:13.5px;line-height:1.48}
+  .questionFocusCard .examChoice{font-size:13px;padding:7px 9px}
+}
