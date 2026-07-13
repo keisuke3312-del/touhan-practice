@@ -152,29 +152,51 @@
   <div id="wrongList"></div>
 </section>
 <section id="data" class="page hidden">
-  <div class="card">
-    <h2>問題・採点データ</h2>
-    <label>問題カテゴリ<select id="importCategorySelect"></select></label>
-    <textarea id="importBox" placeholder="ここに問題JSONを貼り付け"></textarea>
-    <div class="buttonRow"><button id="importJson" class="mainBtn">問題JSONを取り込み</button><button id="clearImportBox" class="subBtn">問題欄を全消去</button></div>
+  <div class="dataHero card">
+    <h2>データ</h2>
+    <p class="note">問題の追加・管理・教材出力・バックアップを、この画面にまとめています。</p>
+    <div class="dataQuickNav">
+      <a href="#dataImport">追加</a><a href="#dataManage">管理</a><a href="#dataPdf">PDF</a><a href="#dataBackup">バックアップ</a>
+    </div>
   </div>
-  <div class="card">
-    <h2>採点結果JSON</h2>
-    <textarea id="resultImportBox" placeholder='{"type":"touhan_result",...}'></textarea>
-    <div class="buttonRow"><button id="importResultJson" class="mainBtn">採点結果JSONを取り込み</button><button id="clearResultImportBox" class="subBtn">採点欄を全消去</button></div>
-  </div>
-  <div class="card">
-    <h2>問題データ管理</h2>
-    <div class="manageActions"><button id="restoreLastDeleted" class="smallBtn">直前の削除を復元</button><button id="repairStorage" class="smallBtn">保存データを修復</button><button id="deleteAllCustom" class="dangerBtn">追加問題を全削除</button><button id="deleteAllBuiltin" class="dangerBtn">標準内蔵を全削除</button><button id="restoreAllBuiltin" class="smallBtn">標準内蔵を復元</button></div>
-    <div class="manageFilters"><label>表示<select id="manageFilter"><option value="custom">追加問題のみ</option><option value="all">すべて</option><option value="one_by_one">一問一答</option><option value="practice60">総合演習60問</option><option value="exam_style">本番形式120問</option></select></label><label>並び替え<select id="manageSort"><option value="new">新しい順</option><option value="old">古い順</option><option value="title">タイトル順</option><option value="questions">問題数が多い順</option></select></label><label>検索<input id="manageSearch" placeholder="日付・タイトル・セット名で検索"></label></div>
-    <div id="examManageList"></div>
-  </div>
-  <div class="card"><h2>問題PDF</h2><p class="note">現在選択している問題回を、端末の印刷機能からPDFとして保存できます。</p><button id="printQuestions" class="subBtn">現在の問題をPDF出力</button></div>
-  <div class="card"><h2>バックアップ</h2><button id="exportData" class="subBtn">全データをコピー</button><textarea id="restoreBox" placeholder="バックアップJSONを貼り付け"></textarea><button id="restoreData" class="mainBtn">バックアップを復元</button></div>
+  <details id="dataImport" class="card dataSection" open>
+    <summary><span>JSONを追加</span><small>問題・採点結果</small></summary>
+    <div class="dataSectionBody">
+      <h3>問題JSON</h3>
+      <label>問題カテゴリ<select id="importCategorySelect"></select></label>
+      <textarea id="importBox" placeholder="ここに問題JSONを貼り付け"></textarea>
+      <div class="buttonRow"><button id="importJson" class="mainBtn">問題JSONを取り込み</button><button id="clearImportBox" class="subBtn">問題欄を全消去</button></div>
+      <hr class="softRule">
+      <h3>採点結果JSON</h3>
+      <textarea id="resultImportBox" placeholder='{"type":"touhan_result",...}'></textarea>
+      <div class="buttonRow"><button id="importResultJson" class="mainBtn">採点結果JSONを取り込み</button><button id="clearResultImportBox" class="subBtn">採点欄を全消去</button></div>
+    </div>
+  </details>
+  <details id="dataManage" class="card dataSection" open>
+    <summary><span>問題データ管理</span><small>日付ごとに整理</small></summary>
+    <div class="dataSectionBody">
+      <div class="manageUtility"><button id="restoreLastDeleted" class="smallBtn">直前の削除を復元</button><button id="repairStorage" class="smallBtn">保存データを修復</button></div>
+      <div class="manageFilters"><label>表示<select id="manageFilter"><option value="custom">追加問題のみ</option><option value="all">すべて</option><option value="one_by_one">一問一答</option><option value="practice60">総合演習60問</option><option value="exam_style">本番形式120問</option></select></label><label>並び替え<select id="manageSort"><option value="new">新しい順</option><option value="old">古い順</option><option value="title">タイトル順</option><option value="questions">問題数が多い順</option></select></label><label>検索<input id="manageSearch" placeholder="日付・タイトル・セット名で検索"></label></div>
+      <div id="examManageList"></div>
+      <details class="dangerZone"><summary>一括削除・標準問題</summary><div class="manageActions"><button id="deleteAllCustom" class="dangerBtn">追加問題を全削除</button><button id="deleteAllBuiltin" class="dangerBtn">標準内蔵を全削除</button><button id="restoreAllBuiltin" class="smallBtn">標準内蔵を復元</button></div></details>
+    </div>
+  </details>
+  <details id="dataPdf" class="card dataSection">
+    <summary><span>問題PDF</span><small>教材として保存・共有</small></summary>
+    <div class="dataSectionBody"><p class="note">現在選択している問題回を、端末の印刷機能からPDFとして保存します。</p><label>出力内容<select id="pdfOutputMode"><option value="questions">問題のみ</option><option value="answers">問題＋解答</option><option value="full">問題＋解答＋解説</option></select></label><button id="printQuestions" class="subBtn">現在の問題をPDF出力</button></div>
+  </details>
+  <details id="dataBackup" class="card dataSection">
+    <summary><span>バックアップ</span><small>端末移行・復元</small></summary>
+    <div class="dataSectionBody"><button id="exportData" class="subBtn">全データをコピー</button><textarea id="restoreBox" placeholder="バックアップJSONを貼り付け"></textarea><button id="restoreData" class="mainBtn">バックアップを復元</button></div>
+  </details>
+</section>
+<section id="manageDetailPage" class="reviewDetailPage hidden" aria-hidden="true">
+  <div class="reviewDetailHeader"><button id="closeManageDetail" class="reviewCloseBtn" aria-label="問題管理詳細を閉じる">×</button><div><h2 id="manageDetailTitle">問題データ</h2><div id="manageDetailMeta" class="note"></div></div></div>
+  <div id="manageDetailBody" class="reviewDetailBody"></div>
 </section>
 <section id="settings" class="page hidden">
   <div class="card"><h2>設定</h2><button id="resetSet" class="subBtn">現在の回答をリセット</button><button id="resetAll" class="dangerBtn">回答履歴を全削除</button></div>
-  <div class="card"><h2>バージョン</h2><div class="versionBox">Version <b id="appVersion">v12.0.6</b><br>Build <b id="appBuild">2026-07-14</b></div></div>
+  <div class="card"><h2>バージョン</h2><div class="versionBox">Version <b id="appVersion">v13.0.0</b><br>Build <b id="appBuild">2026-07-14</b></div></div>
 </section>
 
 </main>
