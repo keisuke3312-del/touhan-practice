@@ -1,4 +1,4 @@
-const APP_VERSION="v12.0.0",BUILD_DATE="2026-07-13";
+const APP_VERSION="v12.0.1",BUILD_DATE="2026-07-13";
 const P="touhan2026",DATA_URL="./data/questions.json",LOGIN="touhan_login_v8",STORE="touhan_answers_v8",CUSTOM="touhan_custom_exams_v8",CUSTOM_TRASH="touhan_custom_exams_trash_v1",HIDDEN_BUILTIN="touhan_hidden_builtin_v1",DELETE_BACKUP="touhan_delete_backup_v2",TIMER_STORE="touhan_timer_v10",SESSION_STORE="touhan_session_v12",WRONG_STORE="touhan_wrong_v12",EMBED={"meta": {"appName": "登録販売者 試験対策", "version": "11.3.1", "examDates": [{"label": "第1回試験", "date": "2026-08-26"}, {"label": "第2回試験", "date": "2026-09-06"}], "today": {"examId": "day-001", "setId": "day-001-set-1"}}, "exams": [{"id": "day-001", "title": "第1回", "date": "2026/07/04", "sets": [{"id": "day-001-set-1", "title": "第1セット", "note": "全120問中 1/4", "questions": [{"no": 1, "chapter": "第1章", "source": "改題", "answer": "×", "text": "医薬品は、期待される薬効のみをもたらし、有害作用を生じることはない。", "explanation": "医薬品には副作用等の有害作用が起こり得ます。"}, {"no": 2, "chapter": "第1章", "source": "改題", "answer": "○", "text": "一般用医薬品であっても、市販後に有効性や安全性に関する情報が集積され、必要に応じて見直しが行われる。", "explanation": "市販後も安全性情報が収集されます。"}, {"no": 3, "chapter": "第1章", "source": "改題", "answer": "×", "text": "一般用医薬品は、医療用医薬品よりも保健衛生上のリスクが高い。", "explanation": "一般用医薬品は相対的にリスクが低いものです。"}, {"no": 4, "chapter": "第1章", "source": "改題", "answer": "○", "text": "セルフメディケーションとは、軽度な身体の不調について、自らの判断で適切に一般用医薬品等を利用する考え方である。", "explanation": "軽度な不調の自己管理を指します。"}, {"no": 5, "chapter": "第1章", "source": "改題", "answer": "×", "text": "一般用医薬品は、添付文書を確認せず経験だけで使用しても問題ない。", "explanation": "添付文書確認が重要です。"}, {"no": 6, "chapter": "第2章", "source": "改題", "answer": "○", "text": "胃液中の塩酸には、タンパク質の消化を助ける働きがある。", "explanation": "胃酸はタンパク質消化に関与します。"}, {"no": 7, "chapter": "第2章", "source": "改題", "answer": "○", "text": "小腸は栄養素の吸収に重要な役割を果たす。", "explanation": "小腸は吸収の中心です。"}, {"no": 8, "chapter": "第2章", "source": "改題", "answer": "○", "text": "肝臓は胆汁を産生する。", "explanation": "胆汁は肝臓で産生されます。"}, {"no": 9, "chapter": "第2章", "source": "改題", "answer": "○", "text": "腎臓は老廃物の排泄だけでなく、水分や電解質の調節にも関与する。", "explanation": "腎臓は体液調節に関与します。"}, {"no": 10, "chapter": "第2章", "source": "改題", "answer": "×", "text": "心臓は静脈血のみを全身へ送り出している。", "explanation": "左心室は動脈血を全身へ送ります。"}, {"no": 11, "chapter": "第3章", "source": "改題", "answer": "○", "text": "第一類医薬品は、販売時に薬剤師による情報提供が義務付けられている。", "explanation": "第一類は薬剤師対応です。"}, {"no": 12, "chapter": "第3章", "source": "改題", "answer": "×", "text": "要指導医薬品は、インターネット販売できる。", "explanation": "要指導医薬品は対面販売です。"}, {"no": 13, "chapter": "第3章", "source": "改題", "answer": "○", "text": "登録販売者は、第二類医薬品及び第三類医薬品を販売できる。", "explanation": "第二類・第三類を扱えます。"}, {"no": 14, "chapter": "第3章", "source": "改題", "answer": "○", "text": "指定第二類医薬品は、陳列方法に一定の基準が設けられている。", "explanation": "陳列に配慮が必要です。"}, {"no": 15, "chapter": "第3章", "source": "改題", "answer": "○", "text": "医薬品の広告では、虚偽又は誇大な表現は禁止されている。", "explanation": "虚偽・誇大広告は禁止です。"}, {"no": 16, "chapter": "第3章", "source": "改題", "answer": "○", "text": "医薬品販売業者には、苦情処理体制の整備が求められる。", "explanation": "相談・苦情対応が必要です。"}, {"no": 17, "chapter": "第3章", "source": "改題", "answer": "×", "text": "配置販売業では、店舗を設ける必要がある。", "explanation": "配置販売は家庭等へ配置する形態です。"}, {"no": 18, "chapter": "第3章", "source": "改題", "answer": "○", "text": "登録販売者は、一定の実務・業務経験等の要件を満たせば店舗管理者になれる場合がある。", "explanation": "管理者要件を満たせば可能です。"}, {"no": 19, "chapter": "第3章", "source": "改題", "answer": "×", "text": "第一類医薬品は、すべて登録販売者のみが販売できる。", "explanation": "第一類は薬剤師です。"}, {"no": 20, "chapter": "第3章", "source": "改題", "answer": "○", "text": "医薬品副作用被害救済制度は、一定の条件を満たした場合に給付対象となる。", "explanation": "一定条件で救済対象です。"}, {"no": 21, "chapter": "第3章", "source": "改題", "answer": "×", "text": "一般用医薬品は、承認後は安全性の再評価が行われない。", "explanation": "承認後も評価されます。"}, {"no": 22, "chapter": "第3章", "source": "改題", "answer": "○", "text": "一般用医薬品の販売では、購入者からの相談に適切に対応することが重要である。", "explanation": "相談対応は重要です。"}, {"no": 23, "chapter": "第4章", "source": "改題", "answer": "○", "text": "アセトアミノフェンは、解熱鎮痛成分として用いられる。", "explanation": "代表的な解熱鎮痛成分です。"}, {"no": 24, "chapter": "第4章", "source": "改題", "answer": "○", "text": "ロペラミドは止瀉成分である。", "explanation": "止瀉成分です。"}, {"no": 25, "chapter": "第4章", "source": "改題", "answer": "○", "text": "クロルフェニラミンマレイン酸塩は抗ヒスタミン成分である。", "explanation": "抗ヒスタミン成分です。"}, {"no": 26, "chapter": "第4章", "source": "改題", "answer": "○", "text": "センノシドは便秘薬成分として用いられる。", "explanation": "大腸刺激性瀉下成分です。"}, {"no": 27, "chapter": "第5章", "source": "改題", "answer": "○", "text": "医薬品の副作用が疑われる場合には、必要に応じて医療機関の受診を勧める。", "explanation": "受診勧奨が必要な場合があります。"}, {"no": 28, "chapter": "第5章", "source": "改題", "answer": "×", "text": "一般用医薬品は、症状が改善しなくても長期間自己判断で使用し続けることが望ましい。", "explanation": "漫然使用せず受診勧奨が必要です。"}, {"no": 29, "chapter": "第5章", "source": "改題", "answer": "○", "text": "添付文書は、安全に使用するための重要な情報源である。", "explanation": "安全使用の重要情報源です。"}, {"no": 30, "chapter": "第5章", "source": "改題", "answer": "○", "text": "副作用情報は、医薬品の適正使用に役立てられる。", "explanation": "安全対策に活用されます。"}]}, {"id": "day-001-set-2", "title": "第2セット", "note": "未登録", "questions": []}, {"id": "day-001-set-3", "title": "第3セット", "note": "未登録", "questions": []}, {"id": "day-001-set-4", "title": "第4セット", "note": "未登録", "questions": []}]}]};
 let data,builtinExams=[],examId,setId,index=0,examMode=false,timer=null,view="normal",viewList=null,wrongMock=false;
 let activeCategory="one_by_one";
@@ -218,12 +218,71 @@ function selectors(){
   if($("categorySelect"))$("categorySelect").onchange=()=>{clearQuestionView();activeCategory=$("categorySelect").value;const next=categoryExams()[0];examId=next?next.id:"";setId=next&&next.sets[0]?next.sets[0].id:"";selectors();render()};
 }
 function setOptions(){const e=exam(),sets=e.sets||[];$("setSelect").innerHTML=sets.length?sets.map(se=>`<option value="${se.id}">${esc(se.title)}</option>`).join(""):'<option value="">問題なし</option>';if(!sets.some(se=>se.id===setId))setId=(sets[0]||{}).id||"";$("setSelect").value=setId}
-function bind(){document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));$(b.dataset.tab).classList.remove("hidden");render();saveSession()});if($("startToday"))$("startToday").onclick=()=>{index=0;document.querySelector('[data-tab="solve"]').click()};$("prevBtn").onclick=()=>{if(index>0)index--;render()};$("nextBtn").onclick=()=>{if(index<vqs().length-1)index++;render()};$("normalModeBtn").onclick=()=>{normal();render()};$("weakModeBtn").onclick=()=>{view="weak";viewList=weakList();index=0;render()};$("randomModeBtn").onclick=()=>{view="random";viewList=shuffle(qs().map((q,i)=>({q,i})));index=0;render()};$("searchBox").oninput=()=>{view="search";viewList=searchList($("searchBox").value);index=0;render()};$("copyCurrent").onclick=()=>copy(JSON.stringify(buildResultPayload(),null,2));$("openChatGPT").onclick=async()=>{await copy(JSON.stringify(buildResultPayload(),null,2));location.href="https://chatgpt.com/"};$("gradeCurrent").onclick=()=>{grade();render();toast("自己採点しました")};$("copyAll").onclick=()=>copy(promptAll());$("showWrong").onclick=wrong;$("getTodayJson").onclick=getPrompt;$("importJson").onclick=importJson;if($("clearImportBox"))$("clearImportBox").onclick=()=>{const box=$("importBox");if(!box||!box.value)return;box.value="";box.focus();toast("入力内容を消去しました")};if($("clearResultImportBox"))$("clearResultImportBox").onclick=()=>{const box=$("resultImportBox");if(!box||!box.value)return;box.value="";box.focus();toast("採点欄を消去しました")};$("copyTemplate").onclick=tpl;$("exportData").onclick=()=>copy(JSON.stringify({answers:store,customExams:custom},null,2));$("restoreData").onclick=restore;$("importResultJson").onclick=importResultJson;$("copyResultTemplate").onclick=copyResultTemplate;$("resetSet").onclick=()=>{if(confirm("リセットしますか？")){delete store[storeKey(examId,setId)];delete store[legacyStoreKey(examId,setId)];save();render()}};$("resetAll").onclick=()=>{if(confirm("回答履歴をすべて削除しますか？\n追加した問題データは削除されません。")){store={};save();render();toast("回答履歴を全削除しました")}};if($("deleteAllCustom"))$("deleteAllCustom").onclick=deleteAllCustom;if($("deleteAllBuiltin"))$("deleteAllBuiltin").onclick=deleteAllBuiltin;if($("restoreAllBuiltin"))$("restoreAllBuiltin").onclick=restoreAllBuiltin;if($("restoreLastDeleted"))$("restoreLastDeleted").onclick=restoreLastDeleted;if($("repairStorage"))$("repairStorage").onclick=manualRepair;$("printQuestions").onclick=printQ;$("printFeedback").onclick=printF;$("startExamMode").onclick=()=>{let n=qs().length||30;openTimerStart(n*60,false,`${n}問`)};$("startMockMode").onclick=()=>openTimerStart(7200,false,"120問");$("wrongMockMode").onclick=()=>openTimerStart(3600,true,"苦手");$("finishExamMode").onclick=finish;document.querySelectorAll(".timerPauseBtn").forEach(b=>b.onclick=pauseTimer);document.querySelectorAll(".timerResumeBtn").forEach(b=>b.onclick=resumeTimer);document.querySelectorAll(".timerResetBtn").forEach(b=>b.onclick=resetTimer);document.querySelectorAll(".timerFinishBtn").forEach(b=>b.onclick=finish);document.querySelectorAll(".timerHideBtn").forEach(b=>b.onclick=hideTimer);if($("showTimerBtn"))$("showTimerBtn").onclick=showTimer;startTimerLoop();renderTimerPanels();$("copyAutoFeedback").onclick=()=>copy(feedback());if($("examManageList"))$("examManageList").onclick=manageClick;if($("manageFilter"))$("manageFilter").onchange=()=>{manageFilter=$("manageFilter").value;manageList()};if($("manageSort"))$("manageSort").onchange=()=>{manageSort=$("manageSort").value;manageList()};if($("manageSearch"))$("manageSearch").oninput=()=>{manageSearch=$("manageSearch").value;manageList()};if($("resumeStudy"))$("resumeStudy").onclick=()=>restoreSession(false);
-if($("settingsFab"))$("settingsFab").onclick=()=>{document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));$("settings").classList.remove("hidden");document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));saveSession()};
-if($("timerFab"))$("timerFab").onclick=()=>$("timerModal").classList.remove("hidden");if($("closeTimerModal"))$("closeTimerModal").onclick=()=>$("timerModal").classList.add("hidden");if($("quickTimerStart"))$("quickTimerStart").onclick=()=>{const m=Math.max(1,Number($("quickTimerMinutes").value)||30);startTimer(m*60,false,`${m}分`);$("timerModal").classList.remove("hidden")};
-if($("wrongFilter"))$("wrongFilter").onchange=renderWrongQuestions;
-if($("wrongQuestionsList"))$("wrongQuestionsList").onclick=e=>{const b=e.target.closest("[data-review-key]");if(!b)return;const k=b.dataset.reviewKey;wrongMeta[k]=wrongMeta[k]||{};wrongMeta[k].reviewed=!wrongMeta[k].reviewed;wrongMeta[k].reviewCount=(wrongMeta[k].reviewCount||0)+1;wrongMeta[k].reviewedAt=new Date().toISOString();persistWrongMeta();renderWrongQuestions()};
-if($("timerStartConfirm"))$("timerStartConfirm").onclick=confirmTimerStart;if($("timerStartCancel"))$("timerStartCancel").onclick=closeTimerStart}
+function bind(){
+  const on=(id,event,handler)=>{const el=$(id);if(el)el.addEventListener(event,handler)};
+  document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{
+    document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active");
+    document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));
+    const page=$(b.dataset.tab);if(page)page.classList.remove("hidden");
+    render();saveSession();
+  });
+  on("startToday","click",()=>{index=0;document.querySelector('[data-tab="solve"]')?.click()});
+  on("prevBtn","click",()=>{if(index>0)index--;render()});
+  on("nextBtn","click",()=>{if(index<vqs().length-1)index++;render()});
+  on("normalModeBtn","click",()=>{normal();render()});
+  on("weakModeBtn","click",()=>{view="weak";viewList=weakList();index=0;render()});
+  on("randomModeBtn","click",()=>{view="random";viewList=shuffle(qs().map((q,i)=>({q,i})));index=0;render()});
+  on("searchBox","input",()=>{view="search";viewList=searchList($("searchBox")?.value||"");index=0;render()});
+  on("copyCurrent","click",()=>copy(JSON.stringify(buildResultPayload(),null,2)));
+  on("openChatGPT","click",async()=>{await copy(JSON.stringify(buildResultPayload(),null,2));location.href="https://chatgpt.com/"});
+  on("gradeCurrent","click",()=>{grade();render();toast("自己採点しました")});
+  on("copyAll","click",()=>copy(promptAll()));
+  on("showWrong","click",wrong);
+  on("getTodayJson","click",getPrompt);
+  on("importJson","click",importJson);
+  on("clearImportBox","click",()=>{const box=$("importBox");if(!box||!box.value)return;box.value="";box.focus();toast("入力内容を消去しました")});
+  on("clearResultImportBox","click",()=>{const box=$("resultImportBox");if(!box||!box.value)return;box.value="";box.focus();toast("採点欄を消去しました")});
+  on("copyTemplate","click",tpl);
+  on("exportData","click",()=>copy(JSON.stringify({answers:store,customExams:custom},null,2)));
+  on("restoreData","click",restore);
+  on("importResultJson","click",importResultJson);
+  on("copyResultTemplate","click",copyResultTemplate);
+  on("resetSet","click",()=>{if(confirm("リセットしますか？")){delete store[storeKey(examId,setId)];delete store[legacyStoreKey(examId,setId)];save();render()}});
+  on("resetAll","click",()=>{if(confirm("回答履歴をすべて削除しますか？\n追加した問題データは削除されません。")){store={};save();render();toast("回答履歴を全削除しました")}});
+  on("deleteAllCustom","click",deleteAllCustom);
+  on("deleteAllBuiltin","click",deleteAllBuiltin);
+  on("restoreAllBuiltin","click",restoreAllBuiltin);
+  on("restoreLastDeleted","click",restoreLastDeleted);
+  on("repairStorage","click",manualRepair);
+  on("printQuestions","click",printQ);
+  on("printFeedback","click",printF);
+  on("startExamMode","click",()=>{let n=qs().length||30;openTimerStart(n*60,false,`${n}問`)});
+  on("startMockMode","click",()=>openTimerStart(7200,false,"120問"));
+  on("wrongMockMode","click",()=>openTimerStart(3600,true,"苦手"));
+  on("finishExamMode","click",finish);
+  document.querySelectorAll(".timerPauseBtn").forEach(b=>b.onclick=pauseTimer);
+  document.querySelectorAll(".timerResumeBtn").forEach(b=>b.onclick=resumeTimer);
+  document.querySelectorAll(".timerResetBtn").forEach(b=>b.onclick=resetTimer);
+  document.querySelectorAll(".timerFinishBtn").forEach(b=>b.onclick=finish);
+  document.querySelectorAll(".timerHideBtn").forEach(b=>b.onclick=hideTimer);
+  on("showTimerBtn","click",showTimer);
+  startTimerLoop();renderTimerPanels();
+  on("copyAutoFeedback","click",()=>copy(feedback()));
+  on("examManageList","click",manageClick);
+  on("manageFilter","change",()=>{manageFilter=$("manageFilter")?.value||"";manageList()});
+  on("manageSort","change",()=>{manageSort=$("manageSort")?.value||"";manageList()});
+  on("manageSearch","input",()=>{manageSearch=$("manageSearch")?.value||"";manageList()});
+  on("resumeStudy","click",()=>restoreSession(false));
+  on("settingsFab","click",()=>{document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));$("settings")?.classList.remove("hidden");document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));saveSession()});
+  on("timerFab","click",()=>$("timerModal")?.classList.remove("hidden"));
+  on("closeTimerModal","click",()=>$("timerModal")?.classList.add("hidden"));
+  on("quickTimerStart","click",()=>{const m=Math.max(1,Number($("quickTimerMinutes")?.value)||30);startTimer(m*60,false,`${m}分`);$("timerModal")?.classList.remove("hidden")});
+  on("wrongFilter","change",renderWrongQuestions);
+  on("wrongQuestionsList","click",e=>{const b=e.target.closest("[data-review-key]");if(!b)return;const k=b.dataset.reviewKey;wrongMeta[k]=wrongMeta[k]||{};wrongMeta[k].reviewed=!wrongMeta[k].reviewed;wrongMeta[k].reviewCount=(wrongMeta[k].reviewCount||0)+1;wrongMeta[k].reviewedAt=new Date().toISOString();persistWrongMeta();renderWrongQuestions()});
+  on("timerStartConfirm","click",confirmTimerStart);
+  on("timerStartCancel","click",closeTimerStart);
+}
 function normal(){view="normal";viewList=null;$("searchBox").value=""}function vqs(){return view==="normal"||!viewList?qs().map((q,i)=>({q,i})):viewList}function weakList(){let w=[];data.exams.forEach(e=>e.sets.forEach(s=>{let st=arr(e.id,s.id),list=s.questions||[];if(st.graded)st.wrong.forEach(i=>list[i]&&w.push({q:list[i],i}))}));return w.length?w:qs().map((q,i)=>({q,i}))}function searchList(term){term=(term||"").trim();if(!term)return qs().map((q,i)=>({q,i}));return qs().map((q,i)=>({q,i})).filter(x=>(x.q.text+x.q.chapter+x.q.source+x.q.explanation).includes(term))}
 function render(){if(!data)return;home();question();stats();graphs();calendar();reviews();registered();manageList();radar();renderTimerPanels();renderWrongQuestions();if($("autoFeedbackBox"))$("autoFeedbackBox").textContent=feedback();dueNotice();saveSession()}
 function home(){let e=exam(),s=set(),a=0,t=0;e.sets.forEach(st=>{let x=arr(e.id,st.id).answers;a+=x.filter(Boolean).length;t+=x.length});$("todayLabel").textContent=`${examOptionLabel(e)}｜${s.title}`;$("todayProgress").textContent=a+"/"+t;$("countdown").innerHTML=data.meta.examDates.map(x=>{const d=Math.ceil((new Date(x.date)-new Date())/86400000);return `<div class="countdownItem"><span>${esc(x.label)}</span><strong>${d}</strong><small>日</small></div>`}).join("");let first=new Date("2026-07-02"),last=new Date("2026-09-06"),now=new Date();$("examProgress").textContent="学習期間進捗："+Math.max(0,Math.min(100,Math.round((now-first)/(last-first)*100)))+"%";$("streak").textContent=streak()+"日";$("examCount").textContent=realExams().length+"/100";let st=arr(),u=st.answers.filter(x=>!x).length;let status=t===0?"問題未登録":a===0?"未開始":a<t?`学習中（残り${t-a}問）`:st.graded?`完了・採点済み（不正解${st.wrong.length}問）`:"回答完了・未採点";if($("todayExecutionStatus"))$("todayExecutionStatus").textContent=status;$("nextAction").innerHTML=u?`未回答が <b>${u}</b> 問あります。`:st.graded?`自己採点済み。不正解 ${st.wrong.length} 問。`:"回答済み。採点へ。"}
@@ -493,7 +552,7 @@ if(localStorage.getItem(LOGIN)==="ok")boot();
 if("serviceWorker" in navigator){
   window.addEventListener("load",async()=>{
     try{
-      const reg=await navigator.serviceWorker.register("./service-worker.js?v=12.0.0",{updateViaCache:"none"});
+      const reg=await navigator.serviceWorker.register("./service-worker.js?v=12.0.1",{updateViaCache:"none"});
       await reg.update();
       if(reg.waiting){reg.waiting.postMessage({type:"SKIP_WAITING"});}
       navigator.serviceWorker.addEventListener("controllerchange",()=>{if(!window.__swReloaded){window.__swReloaded=true;location.reload();}});
