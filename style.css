@@ -35,3 +35,10 @@
 
 .selectionContext{margin:10px 0;padding:10px 12px;border-radius:10px;background:#eef2ff;border:1px solid #c7d2fe;font-weight:700;color:#1f2937;word-break:break-word}
 .questionPrompt{font-weight:700;line-height:1.85;margin-bottom:16px}.statementBlock{display:grid;grid-template-columns:42px 1fr;gap:10px;align-items:start;padding:13px 14px;margin:10px 0;border:1px solid #dbe3ec;border-radius:14px;background:#f8fafc}.statementLabel{width:34px;height:34px;border-radius:10px;background:#111827;color:#fff;display:grid;place-items:center;font-weight:900;text-transform:lowercase}.statementText{line-height:1.8;min-width:0}@media(max-width:420px){.statementBlock{grid-template-columns:38px 1fr;padding:12px}.statementLabel{width:31px;height:31px}}
+
+/* v11.1.3: structured exam choices */
+.choiceTable{display:grid;gap:.38rem;width:100%;text-align:left}
+.choiceTableRow{display:grid;grid-template-columns:2rem 1fr;gap:.55rem;align-items:start}
+.choiceTableLabel{display:inline-flex;align-items:center;justify-content:center;min-width:2rem;height:2rem;border-radius:.55rem;background:#111827;color:#fff;font-weight:800;text-transform:lowercase}
+.choiceTableValue{line-height:1.55;overflow-wrap:anywhere}
+.statementText{white-space:normal}

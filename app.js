@@ -77,6 +77,16 @@ function isCorrectAnswer(q,v){return String(v||"")===answerOf(q)}
 function isValidAnswer(q,v){if(!v)return true;if(hasChoices(q))return q.choices.slice(0,5).some((c,i)=>choiceId(c,i)===String(v));return v==="○"||v==="×"}
 function hasChoices(q){return Array.isArray(q.choices)&&q.choices.length>0}
 function choiceText(c){return typeof c==="string"?c:(c.text||"")}
+
+function choiceTextHtml(value){
+  const text=String(value??"").replace(/\r/g,"").trim();
+  if(!text)return "";
+  const lines=text.split(/\n+/).map(x=>x.trim()).filter(Boolean);
+  if(lines.length>1 && lines.every(x=>/^[a-d]：/i.test(x))){
+    return `<div class="choiceTable">${lines.map(line=>{const m=line.match(/^([a-d])：([\s\S]*)$/i);return `<div class="choiceTableRow"><span class="choiceTableLabel">${esc(m[1].toLowerCase())}</span><span class="choiceTableValue">${esc(m[2])}</span></div>`}).join("")}</div>`;
+  }
+  return esc(text).replace(/\n/g,"<br>");
+}
 function choiceId(c,i){return String((typeof c==="string"?i+1:(c.id??i+1)))}
 function answerLabel(q){if(!hasChoices(q))return answerOf(q);let hit=q.choices.slice(0,5).find((c,i)=>choiceId(c,i)===answerOf(q));return hit?`${answerOf(q)}. ${choiceText(hit)}`:answerOf(q)}
 function loadHiddenBuiltin(){try{let x=JSON.parse(localStorage.getItem(HIDDEN_BUILTIN)||"null");return x&&Array.isArray(x.exams)&&x.sets&&typeof x.sets==="object"?x:{exams:[],sets:{}}}catch(e){return {exams:[],sets:{}}}}function saveHiddenBuiltin(){localStorage.setItem(HIDDEN_BUILTIN,JSON.stringify(hiddenBuiltin));const saved=loadHiddenBuiltin();if(JSON.stringify(saved)!==JSON.stringify(hiddenBuiltin))throw new Error("削除状態を端末へ保存できませんでした") }function save(){localStorage.setItem(STORE,JSON.stringify(store))}function saveC(){localStorage.setItem(CUSTOM,JSON.stringify(custom))}function backupDeleteState(reason="削除前バックアップ"){localStorage.setItem(DELETE_BACKUP,JSON.stringify({savedAt:new Date().toISOString(),reason,customExams:custom,hiddenBuiltin,answers:store}))}function backupCustom(reason="削除前バックアップ"){backupDeleteState(reason)}function visibleBuiltinExams(){return builtinExams.filter(e=>!hiddenBuiltin.exams.includes(e.id)).map(e=>{let hiddenSets=new Set(hiddenBuiltin.sets[e.id]||[]),copy=JSON.parse(JSON.stringify(e));copy.sets=(copy.sets||[]).filter(s=>!hiddenSets.has(s.id));return copy}).filter(e=>(e.sets||[]).length)}function emptyExam(){return normalizeExam({id:"__empty__",title:"問題なし",date:"",category:activeCategory,category_label:catLabel(activeCategory),_systemEmpty:true,sets:[{id:"__empty__-set-1",title:"問題なし",note:"問題を追加してください",questions:[]}]})}function realExams(){return (data.exams||[]).filter(e=>!e._systemEmpty)}function rebuildData(){let real=[...visibleBuiltinExams(),...custom].slice(0,100).map(normalizeExam);data.exams=real.length?real:[emptyExam()]}function toast(m="コピーしました"){let t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(window.__toastTimer);window.__toastTimer=setTimeout(()=>t.classList.remove("show"),2500)}function today(){return new Date().toLocaleDateString("ja-JP")}function iso(d=new Date()){return d.toISOString().slice(0,10)}function add(d,n){let x=new Date(d);x.setDate(x.getDate()+n);return x.toISOString().slice(0,10)}function categoryPlaceholder(){return normalizeExam({id:`__empty__-${activeCategory}`,title:"未登録",date:"",category:activeCategory,category_label:catLabel(activeCategory),_systemEmpty:true,sets:[{id:`__empty__-${activeCategory}-set`,title:"未登録",note:"このカテゴリの問題を追加してください",questions:[]}]})}
@@ -219,7 +229,7 @@ function question(){
   if(hasChoices(q)){
     choicesHtml=`<div class="choices examChoices">${q.choices.slice(0,5).map((c,ci)=>{
       let id=choiceId(c,ci),txt=choiceText(c);
-      return `<button class="choice examChoice ${ans===id?"selected":""}" data-v="${esc(id)}"><span class="choiceId">${esc(id)}</span><span class="choiceText">${esc(txt)}</span></button>`;
+      return `<button class="choice examChoice ${ans===id?"selected":""}" data-v="${esc(id)}"><span class="choiceId">${esc(id)}</span><span class="choiceText">${choiceTextHtml(txt)}</span></button>`;
     }).join("")}</div>`;
   }else{
     choicesHtml=`<div class="choices"><button class="choice ok ${ans==="○"?"selected":""}" data-v="○">○</button><button class="choice ng ${ans==="×"?"selected":""}" data-v="×">×</button></div>`;
