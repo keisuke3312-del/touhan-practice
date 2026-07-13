@@ -169,11 +169,12 @@
     <div class="manageFilters"><label>表示<select id="manageFilter"><option value="custom">追加問題のみ</option><option value="all">すべて</option><option value="one_by_one">一問一答</option><option value="practice60">総合演習60問</option><option value="exam_style">本番形式120問</option></select></label><label>並び替え<select id="manageSort"><option value="new">新しい順</option><option value="old">古い順</option><option value="title">タイトル順</option><option value="questions">問題数が多い順</option></select></label><label>検索<input id="manageSearch" placeholder="日付・タイトル・セット名で検索"></label></div>
     <div id="examManageList"></div>
   </div>
+  <div class="card"><h2>問題PDF</h2><p class="note">現在選択している問題回を、端末の印刷機能からPDFとして保存できます。</p><button id="printQuestions" class="subBtn">現在の問題をPDF出力</button></div>
   <div class="card"><h2>バックアップ</h2><button id="exportData" class="subBtn">全データをコピー</button><textarea id="restoreBox" placeholder="バックアップJSONを貼り付け"></textarea><button id="restoreData" class="mainBtn">バックアップを復元</button></div>
 </section>
 <section id="settings" class="page hidden">
   <div class="card"><h2>設定</h2><button id="resetSet" class="subBtn">現在の回答をリセット</button><button id="resetAll" class="dangerBtn">回答履歴を全削除</button></div>
-  <div class="card"><h2>バージョン</h2><div class="versionBox">Version <b id="appVersion">v12.0.5</b><br>Build <b id="appBuild">2026-07-13</b></div></div>
+  <div class="card"><h2>バージョン</h2><div class="versionBox">Version <b id="appVersion">v12.0.6</b><br>Build <b id="appBuild">2026-07-14</b></div></div>
 </section>
 
 </main>
