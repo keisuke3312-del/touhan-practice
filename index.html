@@ -118,8 +118,8 @@
   </div>
 
   <div class="card">
-    <button id="copyCurrent" class="mainBtn">採点用結果JSONをコピー</button>
-    <button id="openChatGPT" class="subBtn">ChatGPTで採点</button>
+    <button id="copyCurrent" class="mainBtn">全問の詳しい解説JSONをコピー</button>
+    <button id="openChatGPT" class="subBtn">ChatGPTで詳しい解説</button>
   </div>
 </section>
 
@@ -170,6 +170,13 @@
       <h3>採点結果JSON</h3>
       <textarea id="resultImportBox" placeholder='{"type":"touhan_result",...}'></textarea>
       <div class="buttonRow"><button id="importResultJson" class="mainBtn">採点結果JSONを取り込み</button><button id="clearResultImportBox" class="subBtn">採点欄を全消去</button></div>
+      <hr class="softRule">
+      <h3>詳しい解説JSON</h3>
+      <p class="note">全問の詳しい解説だけをChatGPTへ依頼し、返されたJSONを読み込むと復習画面と解説PDFへ反映されます。</p>
+      <div class="buttonRow"><button id="copyExplanationRequest" class="mainBtn">全問の解説依頼JSONをコピー</button><button id="downloadExplanationRequest" class="subBtn">解説依頼JSONを保存</button><button id="copyMissingExplanationRequest" class="subBtn">未取得だけコピー</button></div>
+      <textarea id="explanationImportBox" placeholder='{"type":"touhan_explanation_result",...}'></textarea>
+      <label class="filePickerLabel">解説JSONファイルを選択<input id="explanationFile" type="file" accept="application/json,.json"></label>
+      <div class="buttonRow"><button id="importExplanationJson" class="mainBtn">詳しい解説JSONを取り込み</button><button id="clearExplanationImportBox" class="subBtn">解説欄を全消去</button></div>
     </div>
   </details>
   <details id="dataManage" class="card dataSection" open>
@@ -183,7 +190,7 @@
   </details>
   <details id="dataPdf" class="card dataSection">
     <summary><span>問題PDF</span><small>教材として保存・共有</small></summary>
-    <div class="dataSectionBody"><p class="note">現在選択している問題回をPDF用ページで開きます。ページ上部の「PDF保存画面を開く」から保存し、「アプリに戻る」で戻れます。</p><div class="pdfActionGrid"><button id="printQuestionsOnly" class="subBtn">問題PDFを開く</button><button id="printQuestionsFull" class="mainBtn">問題＋解答＋解説PDFを開く</button></div><p class="note">詳しい解説が未作成の問題は、採点用結果JSONをChatGPTへ送り、返された採点結果JSONを読み込むと補完されます。</p></div>
+    <div class="dataSectionBody"><p class="note">現在選択している問題回をPDF用ページで開きます。ページ上部の「PDF保存画面を開く」から保存し、「アプリに戻る」で戻れます。</p><div class="pdfActionGrid"><button id="printQuestionsOnly" class="subBtn">問題PDFを開く</button><button id="printQuestionsFull" class="mainBtn">問題＋解答＋解説PDFを開く</button></div><p class="note">詳しい解説が未取得の問題は、解説依頼JSONをChatGPTへ送り、返された詳しい解説JSONを読み込むと復習画面とPDFに反映されます。</p></div>
   </details>
   <details id="dataBackup" class="card dataSection">
     <summary><span>バックアップ</span><small>端末移行・復元</small></summary>
@@ -196,7 +203,7 @@
 </section>
 <section id="settings" class="page hidden">
   <div class="card"><h2>設定</h2><button id="resetSet" class="subBtn">現在の回答をリセット</button><button id="resetAll" class="dangerBtn">回答履歴を全削除</button></div>
-  <div class="card"><h2>バージョン</h2><div class="versionBox">Version <b id="appVersion">v13.0.2</b><br>Build <b id="appBuild">2026-07-14</b></div></div>
+  <div class="card"><h2>バージョン</h2><div class="versionBox">Version <b id="appVersion">v13.1.0</b><br>Build <b id="appBuild">2026-07-14</b></div></div>
 </section>
 
 </main>
