@@ -1,4 +1,4 @@
-const APP_VERSION="v13.1.1",BUILD_DATE="2026-07-14";
+const APP_VERSION="v13.1.3",BUILD_DATE="2026-07-14";
 const P="touhan2026",DATA_URL="./data/questions.json",LOGIN="touhan_login_v8",STORE="touhan_answers_v8",CUSTOM="touhan_custom_exams_v8",CUSTOM_TRASH="touhan_custom_exams_trash_v1",HIDDEN_BUILTIN="touhan_hidden_builtin_v1",DELETE_BACKUP="touhan_delete_backup_v2",TIMER_STORE="touhan_timer_v10",SESSION_STORE="touhan_session_v12",WRONG_STORE="touhan_wrong_v12",EXPLANATION_STORE="touhan_detailed_explanations_v1",EMBED={"meta": {"appName": "登録販売者 試験対策", "version": "13.0.2", "examDates": [{"label": "第1回試験", "date": "2026-08-26"}, {"label": "第2回試験", "date": "2026-09-06"}], "today": {"examId": "day-001", "setId": "day-001-set-1"}}, "exams": [{"id": "day-001", "title": "第1回", "date": "2026/07/04", "sets": [{"id": "day-001-set-1", "title": "第1セット", "note": "全120問中 1/4", "questions": [{"no": 1, "chapter": "第1章", "source": "改題", "answer": "×", "text": "医薬品は、期待される薬効のみをもたらし、有害作用を生じることはない。", "explanation": "医薬品には副作用等の有害作用が起こり得ます。"}, {"no": 2, "chapter": "第1章", "source": "改題", "answer": "○", "text": "一般用医薬品であっても、市販後に有効性や安全性に関する情報が集積され、必要に応じて見直しが行われる。", "explanation": "市販後も安全性情報が収集されます。"}, {"no": 3, "chapter": "第1章", "source": "改題", "answer": "×", "text": "一般用医薬品は、医療用医薬品よりも保健衛生上のリスクが高い。", "explanation": "一般用医薬品は相対的にリスクが低いものです。"}, {"no": 4, "chapter": "第1章", "source": "改題", "answer": "○", "text": "セルフメディケーションとは、軽度な身体の不調について、自らの判断で適切に一般用医薬品等を利用する考え方である。", "explanation": "軽度な不調の自己管理を指します。"}, {"no": 5, "chapter": "第1章", "source": "改題", "answer": "×", "text": "一般用医薬品は、添付文書を確認せず経験だけで使用しても問題ない。", "explanation": "添付文書確認が重要です。"}, {"no": 6, "chapter": "第2章", "source": "改題", "answer": "○", "text": "胃液中の塩酸には、タンパク質の消化を助ける働きがある。", "explanation": "胃酸はタンパク質消化に関与します。"}, {"no": 7, "chapter": "第2章", "source": "改題", "answer": "○", "text": "小腸は栄養素の吸収に重要な役割を果たす。", "explanation": "小腸は吸収の中心です。"}, {"no": 8, "chapter": "第2章", "source": "改題", "answer": "○", "text": "肝臓は胆汁を産生する。", "explanation": "胆汁は肝臓で産生されます。"}, {"no": 9, "chapter": "第2章", "source": "改題", "answer": "○", "text": "腎臓は老廃物の排泄だけでなく、水分や電解質の調節にも関与する。", "explanation": "腎臓は体液調節に関与します。"}, {"no": 10, "chapter": "第2章", "source": "改題", "answer": "×", "text": "心臓は静脈血のみを全身へ送り出している。", "explanation": "左心室は動脈血を全身へ送ります。"}, {"no": 11, "chapter": "第3章", "source": "改題", "answer": "○", "text": "第一類医薬品は、販売時に薬剤師による情報提供が義務付けられている。", "explanation": "第一類は薬剤師対応です。"}, {"no": 12, "chapter": "第3章", "source": "改題", "answer": "×", "text": "要指導医薬品は、インターネット販売できる。", "explanation": "要指導医薬品は対面販売です。"}, {"no": 13, "chapter": "第3章", "source": "改題", "answer": "○", "text": "登録販売者は、第二類医薬品及び第三類医薬品を販売できる。", "explanation": "第二類・第三類を扱えます。"}, {"no": 14, "chapter": "第3章", "source": "改題", "answer": "○", "text": "指定第二類医薬品は、陳列方法に一定の基準が設けられている。", "explanation": "陳列に配慮が必要です。"}, {"no": 15, "chapter": "第3章", "source": "改題", "answer": "○", "text": "医薬品の広告では、虚偽又は誇大な表現は禁止されている。", "explanation": "虚偽・誇大広告は禁止です。"}, {"no": 16, "chapter": "第3章", "source": "改題", "answer": "○", "text": "医薬品販売業者には、苦情処理体制の整備が求められる。", "explanation": "相談・苦情対応が必要です。"}, {"no": 17, "chapter": "第3章", "source": "改題", "answer": "×", "text": "配置販売業では、店舗を設ける必要がある。", "explanation": "配置販売は家庭等へ配置する形態です。"}, {"no": 18, "chapter": "第3章", "source": "改題", "answer": "○", "text": "登録販売者は、一定の実務・業務経験等の要件を満たせば店舗管理者になれる場合がある。", "explanation": "管理者要件を満たせば可能です。"}, {"no": 19, "chapter": "第3章", "source": "改題", "answer": "×", "text": "第一類医薬品は、すべて登録販売者のみが販売できる。", "explanation": "第一類は薬剤師です。"}, {"no": 20, "chapter": "第3章", "source": "改題", "answer": "○", "text": "医薬品副作用被害救済制度は、一定の条件を満たした場合に給付対象となる。", "explanation": "一定条件で救済対象です。"}, {"no": 21, "chapter": "第3章", "source": "改題", "answer": "×", "text": "一般用医薬品は、承認後は安全性の再評価が行われない。", "explanation": "承認後も評価されます。"}, {"no": 22, "chapter": "第3章", "source": "改題", "answer": "○", "text": "一般用医薬品の販売では、購入者からの相談に適切に対応することが重要である。", "explanation": "相談対応は重要です。"}, {"no": 23, "chapter": "第4章", "source": "改題", "answer": "○", "text": "アセトアミノフェンは、解熱鎮痛成分として用いられる。", "explanation": "代表的な解熱鎮痛成分です。"}, {"no": 24, "chapter": "第4章", "source": "改題", "answer": "○", "text": "ロペラミドは止瀉成分である。", "explanation": "止瀉成分です。"}, {"no": 25, "chapter": "第4章", "source": "改題", "answer": "○", "text": "クロルフェニラミンマレイン酸塩は抗ヒスタミン成分である。", "explanation": "抗ヒスタミン成分です。"}, {"no": 26, "chapter": "第4章", "source": "改題", "answer": "○", "text": "センノシドは便秘薬成分として用いられる。", "explanation": "大腸刺激性瀉下成分です。"}, {"no": 27, "chapter": "第5章", "source": "改題", "answer": "○", "text": "医薬品の副作用が疑われる場合には、必要に応じて医療機関の受診を勧める。", "explanation": "受診勧奨が必要な場合があります。"}, {"no": 28, "chapter": "第5章", "source": "改題", "answer": "×", "text": "一般用医薬品は、症状が改善しなくても長期間自己判断で使用し続けることが望ましい。", "explanation": "漫然使用せず受診勧奨が必要です。"}, {"no": 29, "chapter": "第5章", "source": "改題", "answer": "○", "text": "添付文書は、安全に使用するための重要な情報源である。", "explanation": "安全使用の重要情報源です。"}, {"no": 30, "chapter": "第5章", "source": "改題", "answer": "○", "text": "副作用情報は、医薬品の適正使用に役立てられる。", "explanation": "安全対策に活用されます。"}]}, {"id": "day-001-set-2", "title": "第2セット", "note": "未登録", "questions": []}, {"id": "day-001-set-3", "title": "第3セット", "note": "未登録", "questions": []}, {"id": "day-001-set-4", "title": "第4セット", "note": "未登録", "questions": []}]}]};
 let data,builtinExams=[],examId,setId,index=0,examMode=false,timer=null,view="normal",viewList=null,wrongMock=false;
 let activeCategory="one_by_one";
@@ -17,7 +17,9 @@ function isGenericExplanation(text){
     "公式過去問に基づく記述です",
     "記述の主語・条件・例外を確認してください",
     "問題文と各選択肢を照合し",
-    "正しい組合せ・記述を確認してください"
+    "正しい組合せ・記述を確認してください",
+    "誤っている語句や条件を、詳しい解説で確認してください",
+    "この記述は誤りです"
   ];
   return generic.some(x=>t.includes(x))||/^正答は[「『].+[」』]です[。．]?$/.test(t);
 }
@@ -31,22 +33,31 @@ function correctedShortExplanation(q){
   let t=String(q?.text||"").replace(/\s+/g," ").trim();
   if(!t)return "短い解説はまだありません。";
   if(answer==="○"||answer==="1")return conciseStatement(t);
+
+  const knowledgeRules=[
+    [/副交感神経系.*肝臓.*グリコーゲン.*分解.*促進/,"肝臓でグリコーゲン分解を促進するのは交感神経系です。副交感神経系ではありません。"],
+    [/交感神経系.*肝臓.*グリコーゲン.*合成.*促進/,"交感神経系は肝臓でグリコーゲン分解を促進し、血糖値を上げる方向に働きます。"],
+    [/プリオン.*(?:脂質|細菌|ウイルス)/,"プリオンは細菌・ウイルス・脂質ではなく、異常化したタンパク質です。"],
+    [/健康食品.*(?:指導|説明).*(?:対象ではない|必要はない)/,"健康食品でも、医薬品との相互作用や安全性に関する相談には適切な情報提供が必要です。"],
+    [/副作用被害救済.*適正.*(?:請求できない|対象ではない)/,"医薬品を適正に使用して生じた健康被害は、副作用被害救済制度の対象となり得ます。"],
+    [/要指導医薬品.*(?:インターネット|ネット).*(?:販売できる|販売可能)/,"要指導医薬品は使用者本人への対面販売が必要で、インターネット販売はできません。"],
+    [/第一類医薬品.*登録販売者.*販売/,"第一類医薬品の販売と情報提供は薬剤師が行います。登録販売者は扱えません。"],
+    [/一般用医薬品.*医療用医薬品.*リスクが高い/,"一般用医薬品は、医療用医薬品と比べて相対的にリスクが低いものとして扱われます。"],
+    [/心臓.*静脈血のみ.*全身/,"左心室は酸素を多く含む動脈血を全身へ送り出します。"]
+  ];
+  for(const [pat,text] of knowledgeRules){if(pat.test(t))return text;}
+
   const rules=[
-    [/ではない。?$/,"です。"],
-    [/とは限らない。?$/,"とされます。"],
-    [/できない。?$/,"できます。"],
-    [/認められない。?$/,"認められます。"],
-    [/対象ではない。?$/,"対象です。"],
-    [/必要はない。?$/,"必要です。"],
-    [/生じることはない。?$/,"生じることがあります。"],
-    [/行われない。?$/,"行われます。"],
-    [/含まれていない。?$/,"含まれています。"],
-    [/関与しない。?$/,"関与します。"]
+    [/対象ではない。?$/,"対象です。"],[/ではない。?$/,"です。"],[/とは限らない。?$/,"とされます。"],
+    [/できない。?$/,"できます。"],[/認められない。?$/,"認められます。"],[/必要はない。?$/,"必要です。"],
+    [/生じることはない。?$/,"生じることがあります。"],[/行われない。?$/,"行われます。"],
+    [/含まれていない。?$/,"含まれています。"],[/関与しない。?$/,"関与します。"]
   ];
   for(const [pat,rep] of rules){if(pat.test(t))return conciseStatement(t.replace(pat,rep));}
-  if(/^必ず/.test(t))return "『必ず』と一律に断定できない点が誤りです。条件や例外があります。";
+  if(/^必ず/.test(t))return "『必ず』と一律に断定できません。条件や例外があります。";
   if(/(?:すべて|全て|一律)/.test(t))return "すべてに一律に当てはまるわけではなく、条件や例外があります。";
-  return "この記述は誤りです。誤っている語句や条件を、詳しい解説で確認してください。";
+  const claim=t.replace(/[。！？]+$/,'');
+  return `「${claim}」という内容は誤りです。正しい知識は詳しい解説で補完してください。`;
 }
 function shortExplanationOf(q){
   const candidates=[q?.shortExplanation,q?.short_explanation,q?.explanation];
