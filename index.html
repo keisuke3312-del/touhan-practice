@@ -135,13 +135,51 @@
 
 <section id="reviewDetailPage" class="reviewDetailPage hidden" aria-hidden="true">
   <div class="reviewDetailHeader">
-    <button id="closeReviewDetail" class="reviewCloseBtn" aria-label="復習詳細を閉じる">×</button>
+    <button id="closeReviewDetail" class="reviewCloseBtn" aria-label="復習詳細を閉じる">×</button><button id="reviewTopBtn" class="reviewTopBtn" aria-label="ページ上部へ戻る">↑</button>
     <div>
       <h2 id="reviewDetailTitle">復習詳細</h2>
       <div id="reviewDetailMeta" class="note"></div>
     </div>
   </div>
   <div id="reviewDetailBody" class="reviewDetailBody"></div>
+</section>
+
+<section id="solveExplanationPage" class="reviewDetailPage hidden" aria-hidden="true">
+  <div class="reviewDetailHeader">
+    <button id="closeSolveExplanation" class="reviewCloseBtn" aria-label="解説詳細を閉じる">×</button>
+    <button id="solveExplanationTopBtn" class="reviewTopBtn" aria-label="ページ上部へ戻る">↑</button>
+    <div><h2 id="solveExplanationTitle">解説</h2><div id="solveExplanationMeta" class="note"></div></div>
+  </div>
+  <div id="solveExplanationBody" class="reviewDetailBody"></div>
+</section>
+
+<section id="jsonWorkspacePage" class="reviewDetailPage hidden" aria-hidden="true">
+  <div class="reviewDetailHeader">
+    <button id="closeJsonWorkspace" class="reviewCloseBtn" aria-label="JSON画面を閉じる">×</button>
+    <button id="jsonWorkspaceTopBtn" class="reviewTopBtn" aria-label="ページ上部へ戻る">↑</button>
+    <div><h2>JSON入力・解説管理</h2><div class="note">入力欄はこの画面だけにまとめています。</div></div>
+  </div>
+  <div class="reviewDetailBody jsonWorkspaceBody">
+    <div class="card">
+      <h3>問題JSON</h3>
+      <label>問題カテゴリ<select id="importCategorySelect"></select></label>
+      <textarea id="importBox" placeholder="ここに問題JSONを貼り付け"></textarea>
+      <div class="buttonRow"><button id="importJson" class="mainBtn">問題JSONを取り込み</button><button id="clearImportBox" class="subBtn">問題欄を全消去</button></div>
+    </div>
+    <div class="card">
+      <h3>採点結果JSON</h3>
+      <textarea id="resultImportBox" placeholder='{"type":"touhan_result",...}'></textarea>
+      <div class="buttonRow"><button id="importResultJson" class="mainBtn">採点結果JSONを取り込み</button><button id="clearResultImportBox" class="subBtn">採点欄を全消去</button></div>
+    </div>
+    <div class="card">
+      <h3>詳しい解説JSON</h3>
+      <p class="note">ChatGPTから返されたJSONを読み込むと、復習画面と解説PDFへ反映されます。</p>
+      <div class="buttonRow"><button id="copyExplanationRequest" class="mainBtn">全問の解説依頼JSONをコピー</button><button id="downloadExplanationRequest" class="subBtn">解説依頼JSONを保存</button><button id="copyMissingExplanationRequest" class="subBtn">未取得だけコピー</button></div>
+      <textarea id="explanationImportBox" placeholder='{"type":"touhan_explanation_result",...}'></textarea>
+      <label class="filePickerLabel">解説JSONファイルを選択<input id="explanationFile" type="file" accept="application/json,.json"></label>
+      <div class="buttonRow"><button id="importExplanationJson" class="mainBtn">詳しい解説JSONを取り込み</button><button id="clearExplanationImportBox" class="subBtn">解説欄を全消去</button></div>
+    </div>
+  </div>
 </section>
 <section id="stats" class="page hidden">
   <div class="card"><h2>分析</h2><div id="statsBox"></div></div>
@@ -162,26 +200,10 @@
       <a href="#dataImport">追加</a><a href="#dataManage">管理</a><a href="#dataPdf">PDF</a><a href="#dataBackup">バックアップ</a>
     </div>
   </div>
-  <details id="dataImport" class="card dataSection" open>
-    <summary><span>JSONを追加</span><small>問題・採点結果</small></summary>
-    <div class="dataSectionBody">
-      <h3>問題JSON</h3>
-      <label>問題カテゴリ<select id="importCategorySelect"></select></label>
-      <textarea id="importBox" placeholder="ここに問題JSONを貼り付け"></textarea>
-      <div class="buttonRow"><button id="importJson" class="mainBtn">問題JSONを取り込み</button><button id="clearImportBox" class="subBtn">問題欄を全消去</button></div>
-      <hr class="softRule">
-      <h3>採点結果JSON</h3>
-      <textarea id="resultImportBox" placeholder='{"type":"touhan_result",...}'></textarea>
-      <div class="buttonRow"><button id="importResultJson" class="mainBtn">採点結果JSONを取り込み</button><button id="clearResultImportBox" class="subBtn">採点欄を全消去</button></div>
-      <hr class="softRule">
-      <h3>詳しい解説JSON</h3>
-      <p class="note">全問の詳しい解説だけをChatGPTへ依頼し、返されたJSONを読み込むと復習画面と解説PDFへ反映されます。</p>
-      <div class="buttonRow"><button id="copyExplanationRequest" class="mainBtn">全問の解説依頼JSONをコピー</button><button id="downloadExplanationRequest" class="subBtn">解説依頼JSONを保存</button><button id="copyMissingExplanationRequest" class="subBtn">未取得だけコピー</button></div>
-      <textarea id="explanationImportBox" placeholder='{"type":"touhan_explanation_result",...}'></textarea>
-      <label class="filePickerLabel">解説JSONファイルを選択<input id="explanationFile" type="file" accept="application/json,.json"></label>
-      <div class="buttonRow"><button id="importExplanationJson" class="mainBtn">詳しい解説JSONを取り込み</button><button id="clearExplanationImportBox" class="subBtn">解説欄を全消去</button></div>
-    </div>
-  </details>
+  <div id="dataImport" class="card dataSection dataLauncherCard">
+    <div class="dataLauncherText"><b>JSON入力・解説管理</b><small>問題追加、採点結果、詳しい解説</small></div>
+    <button id="openJsonWorkspace" class="mainBtn compactBtn">開く</button>
+  </div>
   <details id="dataManage" class="card dataSection" open>
     <summary><span>問題データ管理</span><small>日付ごとに整理</small></summary>
     <div class="dataSectionBody">
