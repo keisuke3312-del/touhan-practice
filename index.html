@@ -56,14 +56,9 @@
   <div id="dueNotice" class="card notice hidden"></div>
 
   <div class="card todayStatusCard">
-    <div class="homeCardHead"><h2>今日の問題</h2><span id="todayProgress" class="todayProgressBig">0/120</span></div>
+    <div class="homeCardHead"><h2>今日の問題</h2><div class="todayHeadStats"><span id="streak" class="streakChip">連続0日</span><span id="todayProgress" class="todayProgressBig">0/120</span></div></div>
     <p id="todayLabel" class="todayLabel"></p>
     <div id="todayExecutionStatus" class="todayExecutionStatus"></div>
-  </div>
-
-  <div class="grid2">
-    <div class="card"><h3>連続学習</h3><div id="streak" class="big">0日</div></div>
-    <div class="card"><h3>登録回数</h3><div id="examCount" class="big">1/100</div></div>
   </div>
 
   <div class="card"><h3>次にやること</h3><div id="nextAction" class="note"></div></div>
@@ -134,30 +129,27 @@
 </section>
 
 <section id="reviewDetailPage" class="reviewDetailPage hidden" aria-hidden="true">
-  <div class="reviewDetailHeader">
-    <button id="closeReviewDetail" class="reviewCloseBtn" aria-label="復習詳細を閉じる">×</button><button id="reviewTopBtn" class="reviewTopBtn" aria-label="ページ上部へ戻る">↑</button>
-    <div>
-      <h2 id="reviewDetailTitle">復習詳細</h2>
-      <div id="reviewDetailMeta" class="note"></div>
-    </div>
+  <div class="reviewDetailHeader smartOverlayHeader">
+    <button id="reviewBackBtn" class="overlayBackBtn" aria-label="前の画面へ戻る">←</button>
+    <div class="overlayTitleBlock"><h2 id="reviewDetailTitle">復習</h2><div id="reviewDetailMeta" class="note"></div></div>
   </div>
   <div id="reviewDetailBody" class="reviewDetailBody"></div>
+  <button id="reviewTopBtn" class="overlayTopFab" aria-label="ページ上部へ戻る">↑</button>
 </section>
 
 <section id="solveExplanationPage" class="reviewDetailPage hidden" aria-hidden="true">
-  <div class="reviewDetailHeader">
-    <button id="closeSolveExplanation" class="reviewCloseBtn" aria-label="解説詳細を閉じる">×</button>
-    <button id="solveExplanationTopBtn" class="reviewTopBtn" aria-label="ページ上部へ戻る">↑</button>
-    <div><h2 id="solveExplanationTitle">解説</h2><div id="solveExplanationMeta" class="note"></div></div>
+  <div class="reviewDetailHeader smartOverlayHeader">
+    <button id="closeSolveExplanation" class="overlayBackBtn" aria-label="問題画面へ戻る">←</button>
+    <div class="overlayTitleBlock"><h2 id="solveExplanationTitle">解説</h2><div id="solveExplanationMeta" class="note"></div></div>
   </div>
   <div id="solveExplanationBody" class="reviewDetailBody"></div>
+  <button id="solveExplanationTopBtn" class="overlayTopFab" aria-label="ページ上部へ戻る">↑</button>
 </section>
 
 <section id="jsonWorkspacePage" class="reviewDetailPage hidden" aria-hidden="true">
-  <div class="reviewDetailHeader">
-    <button id="closeJsonWorkspace" class="reviewCloseBtn" aria-label="JSON画面を閉じる">×</button>
-    <button id="jsonWorkspaceTopBtn" class="reviewTopBtn" aria-label="ページ上部へ戻る">↑</button>
-    <div><h2>JSON入力・解説管理</h2><div class="note">入力欄はこの画面だけにまとめています。</div></div>
+  <div class="reviewDetailHeader smartOverlayHeader">
+    <button id="closeJsonWorkspace" class="overlayBackBtn" aria-label="データ画面へ戻る">←</button>
+    <div class="overlayTitleBlock"><h2>JSON入力・解説管理</h2><div class="note">問題追加・採点結果・詳しい解説</div></div>
   </div>
   <div class="reviewDetailBody jsonWorkspaceBody">
     <div class="card">
@@ -180,6 +172,7 @@
       <div class="buttonRow"><button id="importExplanationJson" class="mainBtn">詳しい解説JSONを取り込み</button><button id="clearExplanationImportBox" class="subBtn">解説欄を全消去</button></div>
     </div>
   </div>
+  <button id="jsonWorkspaceTopBtn" class="overlayTopFab" aria-label="ページ上部へ戻る">↑</button>
 </section>
 <section id="stats" class="page hidden">
   <div class="card"><h2>分析</h2><div id="statsBox"></div></div>
@@ -204,15 +197,10 @@
     <div class="dataLauncherText"><b>JSON入力・解説管理</b><small>問題追加、採点結果、詳しい解説</small></div>
     <button id="openJsonWorkspace" class="mainBtn compactBtn">開く</button>
   </div>
-  <details id="dataManage" class="card dataSection" open>
-    <summary><span>問題データ管理</span><small>日付ごとに整理</small></summary>
-    <div class="dataSectionBody">
-      <div class="manageUtility"><button id="restoreLastDeleted" class="smallBtn">直前の削除を復元</button><button id="repairStorage" class="smallBtn">保存データを修復</button></div>
-      <div class="manageFilters"><label>表示<select id="manageFilter"><option value="custom">追加問題のみ</option><option value="all">すべて</option><option value="one_by_one">一問一答</option><option value="practice60">総合演習60問</option><option value="exam_style">本番形式120問</option></select></label><label>並び替え<select id="manageSort"><option value="new">新しい順</option><option value="old">古い順</option><option value="title">タイトル順</option><option value="questions">問題数が多い順</option></select></label><label>検索<input id="manageSearch" placeholder="日付・タイトル・セット名で検索"></label></div>
-      <div id="examManageList"></div>
-      <details class="dangerZone"><summary>一括削除・標準問題</summary><div class="manageActions"><button id="deleteAllCustom" class="dangerBtn">追加問題を全削除</button><button id="deleteAllBuiltin" class="dangerBtn">標準内蔵を全削除</button><button id="restoreAllBuiltin" class="smallBtn">標準内蔵を復元</button></div></details>
-    </div>
-  </details>
+  <div id="dataManage" class="card dataSection dataLauncherCard">
+    <div class="dataLauncherText"><b>問題データ管理</b><small>日付・カテゴリから選択して管理</small></div>
+    <button id="openManageWorkspace" class="mainBtn compactBtn">開く</button>
+  </div>
   <details id="dataPdf" class="card dataSection">
     <summary><span>問題PDF</span><small>教材として保存・共有</small></summary>
     <div class="dataSectionBody"><p class="note">現在選択している問題回をPDF用ページで開きます。ページ上部の「PDF保存画面を開く」から保存し、「アプリに戻る」で戻れます。</p><div class="pdfActionGrid"><button id="printQuestionsOnly" class="subBtn">問題PDFを開く</button><button id="printQuestionsFull" class="mainBtn">問題＋解答＋解説PDFを開く</button></div><p class="note">詳しい解説が未取得の問題は、解説依頼JSONをChatGPTへ送り、返された詳しい解説JSONを読み込むと復習画面とPDFに反映されます。</p></div>
@@ -223,12 +211,26 @@
   </details>
 </section>
 <section id="manageDetailPage" class="reviewDetailPage hidden" aria-hidden="true">
-  <div class="reviewDetailHeader"><button id="closeManageDetail" class="reviewCloseBtn" aria-label="問題管理詳細を閉じる">×</button><div><h2 id="manageDetailTitle">問題データ</h2><div id="manageDetailMeta" class="note"></div></div></div>
-  <div id="manageDetailBody" class="reviewDetailBody"></div>
+  <div class="reviewDetailHeader smartOverlayHeader">
+    <button id="manageBackBtn" class="overlayBackBtn" aria-label="前の画面へ戻る">←</button>
+    <div class="overlayTitleBlock"><h2 id="manageDetailTitle">問題データ管理</h2><div id="manageDetailMeta" class="note">日付を選択してください</div></div>
+  </div>
+  <div class="reviewDetailBody manageWorkspaceBody">
+    <section id="manageWorkspaceList">
+      <div class="card manageControlCard">
+        <div class="manageUtility"><button id="restoreLastDeleted" class="smallBtn">直前の削除を復元</button><button id="repairStorage" class="smallBtn">保存データを修復</button></div>
+        <div class="manageFilters"><label>表示<select id="manageFilter"><option value="custom">追加問題のみ</option><option value="all">すべて</option><option value="one_by_one">一問一答</option><option value="practice60">総合演習60問</option><option value="exam_style">本番形式120問</option></select></label><label>並び替え<select id="manageSort"><option value="new">新しい順</option><option value="old">古い順</option><option value="title">タイトル順</option><option value="questions">問題数が多い順</option></select></label><label>検索<input id="manageSearch" placeholder="日付・タイトル・セット名で検索"></label></div>
+      </div>
+      <div id="examManageList"></div>
+      <details class="card dangerZone"><summary>一括削除・標準問題</summary><div class="manageActions"><button id="deleteAllCustom" class="dangerBtn">追加問題を全削除</button><button id="deleteAllBuiltin" class="dangerBtn">標準内蔵を全削除</button><button id="restoreAllBuiltin" class="smallBtn">標準内蔵を復元</button></div></details>
+    </section>
+    <section id="manageWorkspaceDetail" class="hidden"></section>
+  </div>
+  <button id="manageTopBtn" class="overlayTopFab" aria-label="ページ上部へ戻る">↑</button>
 </section>
 <section id="settings" class="page hidden">
   <div class="card"><h2>設定</h2><button id="resetSet" class="subBtn">現在の回答をリセット</button><button id="resetAll" class="dangerBtn">回答履歴を全削除</button></div>
-  <div class="card"><h2>バージョン</h2><div class="versionBox">Version <b id="appVersion">v13.1.3</b><br>Build <b id="appBuild">2026-07-14</b></div></div>
+  <div class="card"><h2>バージョン</h2><div class="versionBox">Version <b id="appVersion">v13.2.1</b><br>Build <b id="appBuild">2026-07-18</b></div></div>
 </section>
 
 </main>
