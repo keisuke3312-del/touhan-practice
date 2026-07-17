@@ -150,3 +150,20 @@
 /* v13.2.1 smart navigation */
 .todayHeadStats{display:flex;align-items:center;gap:10px}.streakChip{display:inline-flex;align-items:center;border-radius:999px;background:#eef2ff;color:#3730a3;padding:5px 9px;font-size:11px;font-weight:900;white-space:nowrap}.smartOverlayHeader{display:grid;grid-template-columns:42px minmax(0,1fr);gap:12px}.overlayBackBtn{width:42px;height:42px;border-radius:999px;border:1px solid #d1d5db;background:#fff;color:#111827;font-size:22px;font-weight:900;padding:0}.overlayTitleBlock{min-width:0}.overlayTitleBlock h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.overlayTopFab{position:fixed;right:16px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:5;width:42px;height:42px;border:1px solid #d1d5db;border-radius:999px;background:rgba(255,255,255,.94);box-shadow:0 8px 24px rgba(15,23,42,.14);font-size:18px;font-weight:900}.manageWorkspaceBody{padding-bottom:80px}.manageControlCard{position:sticky;top:76px;z-index:1}.manageWorkspaceBody .dangerZone{padding:0;overflow:hidden}.manageWorkspaceBody .dangerZone>summary{padding:14px}.manageWorkspaceBody .dangerZone .manageActions{padding:0 14px 14px}.dataHero .dataQuickNav{display:none}.dataHero{padding-bottom:10px}.dataHero p{margin-bottom:0}.reviewDetailHeader .note{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.reviewDetailHeader{min-height:72px}.reviewCloseBtn,.reviewTopBtn{display:none!important}
 @media(max-width:520px){.todayHeadStats{gap:7px}.todayProgressBig{font-size:24px}.streakChip{font-size:10px;padding:4px 7px}.manageControlCard{position:static}.smartOverlayHeader{grid-template-columns:38px minmax(0,1fr);gap:9px}.overlayBackBtn{width:38px;height:38px}.overlayTopFab{width:40px;height:40px}}
+
+/* v13.3.0 JSON workspace */
+.workspaceMenuButton{width:100%;display:flex;align-items:center;justify-content:space-between;text-align:left;border:1px solid var(--line,#d7dce3);background:#fff;padding:18px 20px;margin:0 0 12px;border-radius:18px;color:inherit}.workspaceMenuButton div{display:flex;flex-direction:column;gap:4px}.workspaceMenuButton b{font-size:18px}.workspaceMenuButton small{font-size:13px;color:#6f7785}.workspaceMenuButton>span{font-size:30px;color:#8a94a3}.jsonWorkspaceBody textarea{min-height:230px}
+
+/* v13.3.1: compact review schedule */
+#reviewSchedule{margin-top:8px}
+.reviewScheduleCompact{display:grid;gap:8px}
+.reviewDateRow{display:grid;grid-template-columns:92px 1fr;gap:10px;align-items:start;padding:9px 0;border-bottom:1px solid #eef0f3}
+.reviewDateRow:last-child{border-bottom:0}
+.reviewDateLabel{display:flex;flex-direction:column;gap:2px;font-size:12px}
+.reviewDateLabel b{font-size:13px}
+.reviewDateLabel span{color:#6b7280}
+.reviewDueChips{display:flex;flex-wrap:wrap;gap:5px}
+.reviewDueChip,.reviewDueMore{display:inline-flex;align-items:center;min-height:27px;padding:4px 8px;border:1px solid #e5e7eb;border-radius:999px;background:#f9fafb;font-size:11px;line-height:1.2}
+.reviewDueMore{font-weight:800;background:#eef2ff}
+.reviewEmpty,.reviewMoreNote{margin:0;color:#6b7280;font-size:13px}
+@media(max-width:420px){.reviewDateRow{grid-template-columns:78px 1fr;gap:8px}.reviewDueChip,.reviewDueMore{font-size:10px;padding:4px 7px}}

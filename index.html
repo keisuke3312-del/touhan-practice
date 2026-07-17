@@ -149,28 +149,40 @@
 <section id="jsonWorkspacePage" class="reviewDetailPage hidden" aria-hidden="true">
   <div class="reviewDetailHeader smartOverlayHeader">
     <button id="closeJsonWorkspace" class="overlayBackBtn" aria-label="データ画面へ戻る">←</button>
-    <div class="overlayTitleBlock"><h2>JSON入力・解説管理</h2><div class="note">問題追加・採点結果・詳しい解説</div></div>
+    <div class="overlayTitleBlock"><h2 id="jsonWorkspaceTitle">JSON・学習データ</h2><div id="jsonWorkspaceMeta" class="note">項目を選択してください</div></div>
   </div>
   <div class="reviewDetailBody jsonWorkspaceBody">
-    <div class="card">
-      <h3>問題JSON</h3>
-      <label>問題カテゴリ<select id="importCategorySelect"></select></label>
-      <textarea id="importBox" placeholder="ここに問題JSONを貼り付け"></textarea>
-      <div class="buttonRow"><button id="importJson" class="mainBtn">問題JSONを取り込み</button><button id="clearImportBox" class="subBtn">問題欄を全消去</button></div>
-    </div>
-    <div class="card">
-      <h3>採点結果JSON</h3>
-      <textarea id="resultImportBox" placeholder='{"type":"touhan_result",...}'></textarea>
-      <div class="buttonRow"><button id="importResultJson" class="mainBtn">採点結果JSONを取り込み</button><button id="clearResultImportBox" class="subBtn">採点欄を全消去</button></div>
-    </div>
-    <div class="card">
-      <h3>詳しい解説JSON</h3>
-      <p class="note">ChatGPTから返されたJSONを読み込むと、復習画面と解説PDFへ反映されます。</p>
-      <div class="buttonRow"><button id="copyExplanationRequest" class="mainBtn">全問の解説依頼JSONをコピー</button><button id="downloadExplanationRequest" class="subBtn">解説依頼JSONを保存</button><button id="copyMissingExplanationRequest" class="subBtn">未取得だけコピー</button></div>
-      <textarea id="explanationImportBox" placeholder='{"type":"touhan_explanation_result",...}'></textarea>
-      <label class="filePickerLabel">解説JSONファイルを選択<input id="explanationFile" type="file" accept="application/json,.json"></label>
-      <div class="buttonRow"><button id="importExplanationJson" class="mainBtn">詳しい解説JSONを取り込み</button><button id="clearExplanationImportBox" class="subBtn">解説欄を全消去</button></div>
-    </div>
+    <section id="jsonWorkspaceMenu">
+      <button class="card workspaceMenuButton" data-json-page="problem"><div><b>問題JSON</b><small>生成した問題をアプリへ追加</small></div><span>›</span></button>
+      <button class="card workspaceMenuButton" data-json-page="explanation"><div><b>詳しい解説JSON</b><small>解説依頼の出力・解説結果の取込</small></div><span>›</span></button>
+      <button class="card workspaceMenuButton" data-json-page="learning"><div><b>学習状況JSON</b><small>正誤・迷った・出題履歴を生成エンジンへ渡す</small></div><span>›</span></button>
+    </section>
+    <section id="jsonWorkspaceProblem" class="hidden">
+      <div class="card">
+        <h3>問題JSON</h3>
+        <label>問題カテゴリ<select id="importCategorySelect"></select></label>
+        <textarea id="importBox" placeholder="ここに問題JSONを貼り付け"></textarea>
+        <div class="buttonRow"><button id="importJson" class="mainBtn">問題JSONを取り込み</button><button id="clearImportBox" class="subBtn">全消去</button></div>
+      </div>
+    </section>
+    <section id="jsonWorkspaceExplanation" class="hidden">
+      <div class="card">
+        <h3>詳しい解説JSON</h3>
+        <p class="note">ChatGPTから返されたJSONを読み込むと、復習画面と解説PDFへ反映されます。</p>
+        <div class="buttonRow"><button id="copyExplanationRequest" class="mainBtn">全問の解説依頼JSONをコピー</button><button id="downloadExplanationRequest" class="subBtn">解説依頼JSONを保存</button><button id="copyMissingExplanationRequest" class="subBtn">未取得だけコピー</button></div>
+        <textarea id="explanationImportBox" placeholder='{"type":"touhan_explanation_result",...}'></textarea>
+        <label class="filePickerLabel">解説JSONファイルを選択<input id="explanationFile" type="file" accept="application/json,.json"></label>
+        <div class="buttonRow"><button id="importExplanationJson" class="mainBtn">詳しい解説JSONを取り込み</button><button id="clearExplanationImportBox" class="subBtn">全消去</button></div>
+      </div>
+    </section>
+    <section id="jsonWorkspaceLearning" class="hidden">
+      <div class="card">
+        <h3>学習状況JSON</h3>
+        <p class="note">採点済み問題の正誤、迷った記録、最終解答日時をまとめます。生成エンジンへ読み込ませると、未出題を最優先し、その次に誤答・迷った問題を優先できます。</p>
+        <div id="learningStateSummary" class="note"></div>
+        <div class="buttonRow"><button id="downloadLearningState" class="mainBtn">学習状況JSONを保存</button><button id="copyLearningState" class="subBtn">コピー</button></div>
+      </div>
+    </section>
   </div>
   <button id="jsonWorkspaceTopBtn" class="overlayTopFab" aria-label="ページ上部へ戻る">↑</button>
 </section>
@@ -194,7 +206,7 @@
     </div>
   </div>
   <div id="dataImport" class="card dataSection dataLauncherCard">
-    <div class="dataLauncherText"><b>JSON入力・解説管理</b><small>問題追加、採点結果、詳しい解説</small></div>
+    <div class="dataLauncherText"><b>JSON入力・解説管理</b><small>問題追加、詳しい解説、学習状況</small></div>
     <button id="openJsonWorkspace" class="mainBtn compactBtn">開く</button>
   </div>
   <div id="dataManage" class="card dataSection dataLauncherCard">
@@ -230,7 +242,7 @@
 </section>
 <section id="settings" class="page hidden">
   <div class="card"><h2>設定</h2><button id="resetSet" class="subBtn">現在の回答をリセット</button><button id="resetAll" class="dangerBtn">回答履歴を全削除</button></div>
-  <div class="card"><h2>バージョン</h2><div class="versionBox">Version <b id="appVersion">v13.2.1</b><br>Build <b id="appBuild">2026-07-18</b></div></div>
+  <div class="card"><h2>バージョン</h2><div class="versionBox">Version <b id="appVersion">v13.3.1</b><br>Build <b id="appBuild">2026-07-18</b></div></div>
 </section>
 
 </main>
