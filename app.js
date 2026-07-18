@@ -481,8 +481,15 @@ function renderWrongQuestions(){
 
 let knowledgeReviewView={level:"chapters",chapter:"",category:"",theme:"",scroll:0};
 let weakReviewView={level:"dates",date:"",groupKey:"",scroll:0};
+function isSourceOrYearLabel(value){
+  const v=String(value||"").trim();
+  if(!v)return false;
+  return /^(?:(?:東京都|北海道|(?:京都|大阪)府|.{2,3}県)?\s*)?(?:19|20)\d{2}(?:年(?:度)?)?(?:\s*(?:午前|午後|前半|後半))?$/.test(v)
+    || /^(?:東京都|北海道|(?:京都|大阪)府|.{2,3}県)(?:\s*(?:19|20)\d{2}(?:年(?:度)?)?)?$/.test(v);
+}
 function themeLabelFromQuestion(q){
-  const explicit=String(q?.theme||q?.knowledgeTheme||q?.knowledge_name||"").trim();if(explicit)return explicit;
+  const explicit=String(q?.theme||q?.knowledgeTheme||q?.knowledge_name||"").trim();
+  if(explicit&&!isSourceOrYearLabel(explicit))return explicit;
   const t=String(q?.text||"").replace(/\s+/g," ");
   const patterns=[
     [/アセトアミノフェン/,"アセトアミノフェンの使用条件"],[/アスピリン|サリチル酸/,"アスピリンとライ症候群"],[/イブプロフェン/,"イブプロフェンの使用条件"],
@@ -497,7 +504,7 @@ function themeLabelFromQuestion(q){
   if(key)return `${q?.chapter||"知識"}の要点 ${key.split(/[-_:]/).slice(-1)[0]}`;
   return t.replace(/[。．].*$/,'').slice(0,28)||"知識テーマ";
 }
-function reviewCategoryFromQuestion(q){const explicit=String(q?.reviewCategory||q?.review_category||q?.categoryName||"").trim();if(explicit&&!/^(?:19|20)\d{2}(?:年(?:度)?)?$/.test(explicit))return explicit;const ch=String(q?.chapter||""),t=`${q?.text||""} ${q?.knowledge_id||q?.knowledgeId||""}`;const rules={
+function reviewCategoryFromQuestion(q){const explicit=String(q?.reviewCategory||q?.review_category||q?.categoryName||"").trim();if(explicit&&!isSourceOrYearLabel(explicit))return explicit;const ch=String(q?.chapter||""),t=`${q?.text||""} ${q?.knowledge_id||q?.knowledgeId||""}`;const rules={
 "第1章":[[/副作用/,"副作用"],[/相互作用|併用/,"相互作用"],[/小児|乳児|高齢者|妊婦|授乳/,"年齢・生活者別"],[/プラセボ|薬害|医薬品の本質/,"医薬品の基本"]],
 "第2章":[[/胃|腸|肝|胆|膵|消化/,"消化器"],[/肺|気管|呼吸/,"呼吸器"],[/心臓|血管|血圧|血液|HDL|LDL/,"循環器・血液"],[/脳|神経|交感神経|副交感神経/,"神経系"],[/眼|目|耳|鼻/,"目・耳・鼻"],[/皮膚|毛|汗腺/,"皮膚"],[/腎|尿|膀胱/,"腎臓・泌尿器"],[/免疫|内分泌|ホルモン/,"内分泌・免疫"]],
 "第3章":[[/かぜ|総合感冒/,"かぜ薬"],[/解熱|鎮痛|アセトアミノフェン|アスピリン|イブプロフェン/,"解熱鎮痛薬"],[/鎮咳|去痰|せき|たん/,"鎮咳去痰薬"],[/胃腸|制酸|健胃|消化|止瀉|瀉下|便秘|浣腸/,"胃腸薬・便秘薬"],[/漢方|葛根湯|香蘇散|小柴胡湯|防風通聖散/,"漢方処方"],[/生薬/,"生薬"],[/鼻炎|抗ヒスタミン|アレルギー/,"鼻炎・アレルギー用薬"],[/眼科|点眼|目薬/,"眼科用薬"],[/皮膚|外用|軟膏|みずむし|虫刺され/,"皮膚用薬"],[/婦人|月経/,"婦人薬"],[/強心|コレステロール|貧血/,"循環器・滋養強壮"],[/禁煙|ニコチン/,"禁煙補助剤"]],
