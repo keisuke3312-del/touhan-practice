@@ -167,3 +167,7 @@
 .reviewDueMore{font-weight:800;background:#eef2ff}
 .reviewEmpty,.reviewMoreNote{margin:0;color:#6b7280;font-size:13px}
 @media(max-width:420px){.reviewDateRow{grid-template-columns:78px 1fr;gap:8px}.reviewDueChip,.reviewDueMore{font-size:10px;padding:4px 7px}}
+
+
+/* v13.4.0 knowledge review and compact weak review */
+.knowledgeThemeButton{width:100%;text-align:left;border:1px solid #e2e8f0;background:#fff;border-radius:16px;padding:15px;margin-bottom:10px;color:inherit}.knowledgeThemeHead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.knowledgeThemeHead b{font-size:16px}.priorityStars{color:#f59e0b;letter-spacing:1px;font-weight:900;white-space:nowrap}.priorityStars.large{font-size:24px;margin-bottom:6px}.knowledgeThemeChevron{display:block;text-align:right;color:#2563eb;font-size:12px;font-weight:800;margin-top:8px}.knowledgeSummaryCard{text-align:center}.unsureMark{background:#fff7ed!important;color:#9a3412}.reviewDetailBody>.wrongGroupButton,.reviewDetailBody>.knowledgeThemeButton{display:flex}.reviewDetailBody>.knowledgeThemeButton{display:block}

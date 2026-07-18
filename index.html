@@ -123,9 +123,27 @@
 
 
 <section id="wrong" class="page hidden">
-  <div class="card"><div class="homeCardHead"><h2>復習</h2><span id="wrongCount" class="categoryBadge">0問</span></div>
-  <div class="wrongFilters"><label>表示<select id="wrongFilter"><option value="all">すべて</option><option value="unreviewed">未復習</option><option value="reviewed">復習済み</option></select></label></div></div>
-  <div id="wrongQuestionsList"></div>
+  <div class="card"><div class="homeCardHead"><h2>復習</h2><span id="wrongCount" class="categoryBadge">0項目</span></div><p class="note">成績表ではなく、次に復習する知識へ進むための画面です。</p></div>
+  <button id="openKnowledgeReview" class="card workspaceMenuButton"><div><b>知識テーマ別復習</b><small>章 → 知識テーマ → 関連問題</small></div><span>›</span></button>
+  <button id="openWeakReview" class="card workspaceMenuButton"><div><b>苦手復習</b><small>日付 → セット → 間違えた問題</small></div><span>›</span></button>
+</section>
+
+<section id="knowledgeReviewPage" class="reviewDetailPage hidden" aria-hidden="true">
+  <div class="reviewDetailHeader smartOverlayHeader">
+    <button id="knowledgeReviewBackBtn" class="overlayBackBtn" aria-label="前の画面へ戻る">←</button>
+    <div class="overlayTitleBlock"><h2 id="knowledgeReviewTitle">知識テーマ別復習</h2><div id="knowledgeReviewMeta" class="note"></div></div>
+  </div>
+  <div id="knowledgeReviewBody" class="reviewDetailBody"></div>
+  <button id="knowledgeReviewTopBtn" class="overlayTopFab" aria-label="ページ上部へ戻る">↑</button>
+</section>
+
+<section id="weakReviewPage" class="reviewDetailPage hidden" aria-hidden="true">
+  <div class="reviewDetailHeader smartOverlayHeader">
+    <button id="weakReviewBackBtn" class="overlayBackBtn" aria-label="前の画面へ戻る">←</button>
+    <div class="overlayTitleBlock"><h2 id="weakReviewTitle">苦手復習</h2><div id="weakReviewMeta" class="note">日付を選択してください</div></div>
+  </div>
+  <div id="weakReviewBody" class="reviewDetailBody"></div>
+  <button id="weakReviewTopBtn" class="overlayTopFab" aria-label="ページ上部へ戻る">↑</button>
 </section>
 
 <section id="reviewDetailPage" class="reviewDetailPage hidden" aria-hidden="true">
@@ -242,7 +260,7 @@
 </section>
 <section id="settings" class="page hidden">
   <div class="card"><h2>設定</h2><button id="resetSet" class="subBtn">現在の回答をリセット</button><button id="resetAll" class="dangerBtn">回答履歴を全削除</button></div>
-  <div class="card"><h2>バージョン</h2><div class="versionBox">Version <b id="appVersion">v13.3.1</b><br>Build <b id="appBuild">2026-07-18</b></div></div>
+  <div class="card"><h2>バージョン</h2><div class="versionBox">Version <b id="appVersion">v13.4.0</b><br>Build <b id="appBuild">2026-07-18</b></div></div>
 </section>
 
 </main>
