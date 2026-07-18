@@ -74,16 +74,18 @@
         <label>回<select id="examSelect"></select></label>
         <label>セット<select id="setSelect"></select></label>
       </div>
+      <div class="problemModeField">
+        <span class="problemModeLabel">出題形式</span>
+        <div class="modes compactModes">
+          <button id="normalModeBtn" class="subBtn">通常</button>
+          <button id="weakModeBtn" class="subBtn">苦手だけ</button>
+          <button id="randomModeBtn" class="subBtn">ランダム</button>
+        </div>
+      </div>
       <input id="searchBox" placeholder="問題検索（例：アセトアミノフェン）">
     </div>
   </details>
   <div class="card solveStatusCompact"><div id="currentSelectionLabel" class="selectionContext">選択中の問題</div><div class="bar"><span id="qProgress"></span><span id="unanswered"></span></div></div>
-
-  <div class="card modes">
-    <button id="normalModeBtn" class="subBtn">通常</button>
-    <button id="weakModeBtn" class="subBtn">苦手だけ</button>
-    <button id="randomModeBtn" class="subBtn">ランダム</button>
-  </div>
 
   <div id="empty" class="card hidden"><h2>このセットは未登録です</h2><p class="note">追加タブから問題JSONを取り込んでください。</p></div>
   <div id="questionCard" class="card questionFocusCard"></div>
@@ -238,7 +240,7 @@
 </section>
 <section id="settings" class="page hidden">
   <div class="card"><h2>設定</h2><button id="resetSet" class="subBtn">現在の回答をリセット</button><button id="resetAll" class="dangerBtn">回答履歴を全削除</button></div>
-  <div class="card"><h2>バージョン</h2><div class="versionBox">Version <b id="appVersion">v13.5.1</b><br>Build <b id="appBuild">2026-07-18</b></div></div>
+  <div class="card"><h2>バージョン</h2><div class="versionBox">Version <b id="appVersion">v13.6.2</b><br>Build <b id="appBuild">2026-07-19</b></div></div>
 </section>
 
 </main>
