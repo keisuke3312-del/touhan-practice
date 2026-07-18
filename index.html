@@ -36,7 +36,7 @@
   <button data-tab="stats">分析</button>
   <button data-tab="data">データ</button>
 </nav>
-<button id="timerFab" class="timerFab" aria-label="タイマー">⏱</button>
+<button id="timerFab" class="timerFab" aria-label="タイマー"><span class="timerFabIcon">⏱</span><span id="timerFabTime" class="timerFabTime">30:00</span></button>
 <button id="settingsFab" class="settingsFab" aria-label="設定">⚙</button>
 
 <main>
@@ -66,37 +66,18 @@
 </section>
 
 <section id="solve" class="page hidden">
-  <div class="card">
-    <div class="selectors selectors3">
-      <label>カテゴリ<select id="categorySelect"></select></label>
-      <label>回<select id="examSelect"></select></label>
-      <label>セット<select id="setSelect"></select></label>
-    </div>
-    <input id="searchBox" placeholder="問題検索（例：アセトアミノフェン）">
-    <div id="currentSelectionLabel" class="selectionContext">選択中の問題</div><div class="bar"><span id="qProgress"></span><span id="unanswered"></span></div>
-  </div>
-
-  <div id="timerShowCard" class="card timerShowCard hidden">
-    <button id="showTimerBtn" class="subBtn">タイマーを表示</button>
-  </div>
-
-  <div class="card timerPanel" data-timer-panel="solve">
-    <div class="timerHead">
-      <div>
-        <h3>本番タイマー</h3>
-        <div class="timerStatus">停止中</div>
+  <details id="problemSelectorDetails" class="card problemSelectorDetails">
+    <summary><span>問題を選択</span><small id="problemSelectorSummary">カテゴリ・回・セットを変更</small></summary>
+    <div class="problemSelectorBody">
+      <div class="selectors selectors3">
+        <label>カテゴリ<select id="categorySelect"></select></label>
+        <label>回<select id="examSelect"></select></label>
+        <label>セット<select id="setSelect"></select></label>
       </div>
-      <div class="timerDisplay">30:00</div>
+      <input id="searchBox" placeholder="問題検索（例：アセトアミノフェン）">
     </div>
-    <div class="timerMeta"><span class="timerModeLabel">30問</span><span class="timerAnswered">0/30</span></div>
-    <div class="timerControls">
-      <button type="button" class="subBtn timerPauseBtn">一時停止</button>
-      <button type="button" class="subBtn timerResumeBtn">再開</button>
-      <button type="button" class="subBtn timerResetBtn">リセット</button>
-      <button type="button" class="subBtn timerHideBtn">非表示</button>
-    </div>
-    <button type="button" class="dangerBtn timerFinishBtn">終了して自己採点</button>
-  </div>
+  </details>
+  <div class="card solveStatusCompact"><div id="currentSelectionLabel" class="selectionContext">選択中の問題</div><div class="bar"><span id="qProgress"></span><span id="unanswered"></span></div></div>
 
   <div class="card modes">
     <button id="normalModeBtn" class="subBtn">通常</button>
