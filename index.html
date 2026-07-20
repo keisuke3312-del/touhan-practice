@@ -217,7 +217,7 @@
   </details>
   <details id="dataBackup" class="card dataSection">
     <summary><span>バックアップ</span><small>端末移行・復元</small></summary>
-    <div class="dataSectionBody"><button id="exportData" class="subBtn">全データをコピー</button><textarea id="restoreBox" placeholder="バックアップJSONを貼り付け"></textarea><button id="restoreData" class="mainBtn">バックアップを復元</button></div>
+    <div class="dataSectionBody"><p class="note">学習履歴・追加問題・苦手復習・詳しい解説・削除状態をまとめて保存します。端末変更やURL変更の前に書き出してください。</p><button id="exportData" class="mainBtn">学習データを書き出す</button><button id="copyBackupData" class="subBtn">バックアップJSONをコピー</button><div id="backupStatus" class="note">書き出し履歴なし</div><label class="fileImportLabel">バックアップファイルを選択<input id="backupFile" type="file" accept="application/json,.json"></label><textarea id="restoreBox" placeholder="バックアップJSONを貼り付け"></textarea><button id="restoreData" class="subBtn">貼り付けたJSONから復元</button><p class="note">30日以上書き出していない場合は、起動時にバックアップを促します。内部にも最新状態を自動保存します。</p></div>
   </details>
 </section>
 <section id="manageDetailPage" class="reviewDetailPage hidden" aria-hidden="true">
@@ -240,7 +240,7 @@
 </section>
 <section id="settings" class="page hidden">
   <div class="card"><h2>設定</h2><button id="resetSet" class="subBtn">現在の回答をリセット</button><button id="resetAll" class="dangerBtn">回答履歴を全削除</button></div>
-  <div class="card"><h2>バージョン</h2><div class="versionBox">Version <b id="appVersion">v13.7.2</b><br>Build <b id="appBuild">2026-07-21</b></div></div>
+  <div class="card"><h2>バージョン</h2><div class="versionBox">Version <b id="appVersion">v13.8.0</b><br>Build <b id="appBuild">2026-07-21</b></div></div>
 </section>
 
 </main>
